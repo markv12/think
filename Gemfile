@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem 'pry'
 gem 'haml'
+gem 'rails_12factor'
