@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'pry'
 gem 'haml'
 gem 'rails_12factor'
+gem 'authlogic'
+gem 'scrypt'
