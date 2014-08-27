@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
+
+#LoggedInIndicator{
+  font-size: 12px;
+  text-align:left;
+}
+
+#flash .info_box{
+  background-color: #FFFF00;
+  border-radius:5px;
+}
+#flash .error_box{
+  background-color: #FF1111;
+  border-radius:5px;
+}

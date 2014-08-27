@@ -1,20 +1,22 @@
-<%= form_for(user_session, url: user_sessions_path) do |form| %>
-  <% if user_session.errors.any? %>
-    <ul>
-      <% user_session.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<div class="columns large-centered large-6">
+  <%= form_for(user_session, url: user_sessions_path) do |form| %>
+    <% if user_session.errors.any? %>
+      <ul>
+        <% user_session.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <p>
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </p>
+
+    <p>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </p>
+
+    <%= form.submit 'Login', class: "button"%>
   <% end %>
-  <p>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </p>
-
-  <p>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </p>
-
-  <%= form.submit 'Login' %>
-<% end %>
+</div>
