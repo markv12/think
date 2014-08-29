@@ -21,5 +21,7 @@ module Moodtrackingapp
     # config.i18n.default_locale = :de
     config.filter_parameters += [:password]
     config.filter_parameters += [:password_confirmation]
+
+    config.time_zone = "Central Time (US & Canada)"
   end
 end
