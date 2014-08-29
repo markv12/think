@@ -1,3 +1,4 @@
 <h2>Hello <%=h @user.name %></h2>
 
-There will soon be lots of awesome mood tracking stuff here.
+<p>Today's Entry:</p>
+<%= render partial: 'entries/form', locals: {entry: @user.todays_entry()}%>

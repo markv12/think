@@ -1,0 +1,9 @@
+<div class="columns large-centered large-10">
+
+  <%= form_for(entry, url: entry_path(entry)) do |form| %>
+    <p>
+      <%= form.text_area :text, id: "entry_area" %>
+    </p>
+    <%= form.submit 'Save', class: "button", id: "entry_submit" %>
+  <% end %>
+</div>

@@ -1,6 +1,30 @@
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
 <div class="main_content">
   <p>Mood Tracking App</p>
 
   <br/>
-  <img src="http://deliveringhappiness.com/wp-content/uploads/2011/10/happyball.jpg" alt="Happy Thoughts">
+  <img src="http://deliveringhappiness.com/wp-content/uploads/2011/10/happyball.jpg" alt="Happy Thoughts" onclick="blackOut();">
 </div>
+
+
+<script type="text/javascript">
+   blacked_out = false;
+   function blackOut(){
+      if(blacked_out){
+        d3.select("body").transition().duration(1000)
+            .style("background-color", "white");
+        d3.selectAll("p").transition().duration(1000)
+            .style("color", "black");
+        blacked_out = false;
+      }
+      else{
+        d3.select("body").transition().duration(1000)
+            .style("background-color", "black");
+        d3.selectAll("p").transition().duration(1000)
+            .style("color", "white");
+        blacked_out = true;
+      }
+
+   }
+</script>
