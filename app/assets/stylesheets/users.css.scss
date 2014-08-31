@@ -4,4 +4,25 @@
 #entry_area{
   height:60vh;
   font-size:20px;
+  border: 0 none white;
+  outline: none;
+  resize: none;
+}
+
+.entry_link{
+  width:30px;
+  height:40px;
+  background-color:#00CCFF;
+  border-radius:5px;
+}
+.entry_link:hover{
+  background-color:#00AACC;
+}
+
+#save_indicator small{
+  line-height: 1px !important;
+}
+
+#wordcount_indicator {
+  margin:0px;
 }

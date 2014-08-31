@@ -1,9 +1,21 @@
-<div class="columns large-centered large-10">
-
-  <%= form_for(entry, url: entry_path(entry)) do |form| %>
-    <p>
-      <%= form.text_area :text, id: "entry_area" %>
-    </p>
-    <%= form.submit 'Save', class: "button", id: "entry_submit" %>
-  <% end %>
+<div class="row">
+  <div class="columns large-centered large-10">
+    <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
+      <p>
+        <%= form.text_area :text, id: "entry_area", autofocus:true%>
+      </p>
+      <div class="row">
+        <div class="columns large-8">
+        <p></p>
+        </div>
+        <div class="columns large-2">
+          <h4 class="inline" id="wordcount_indicator">  </h4>
+          <div id="save_indicator"></div>
+        </div>
+        <div class="columns large-2">
+          <%= form.submit 'Save', class: "button", id: "entry_submit", class: "inline, button"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

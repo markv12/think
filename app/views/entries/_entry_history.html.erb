@@ -1,0 +1,7 @@
+<div class="row inline">
+  <% for @entry in entries %>
+      <a href=<%= entry_path(@entry) %> class="inline">
+        <div class="inline entry_link"></div>
+      </a>
+  <% end %>
+</div>
