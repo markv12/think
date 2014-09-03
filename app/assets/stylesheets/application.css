@@ -33,3 +33,11 @@
 .inline{
   display:inline-block;
 }
+
+.panel{
+  border-radius:10px;
+}
+
+.link-panel:hover {
+  background-color: #AAAAAA;
+}

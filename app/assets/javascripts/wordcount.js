@@ -9,10 +9,13 @@ function calc_word_count(){
   var wordcount = text.split(" ").length
   $("#wordcount_indicator").html("Words: "+wordcount);
 }
-if($("#entry_area").length){
-  calc_word_count();
-
-  $("#entry_area").bind('input propertychange', function() {
+$(function() {
+  if($("#entry_area").length){
     calc_word_count();
-  });
-}
+
+    $("#entry_area").bind('input propertychange', function() {
+      calc_word_count();
+    });
+  }
+});
+
