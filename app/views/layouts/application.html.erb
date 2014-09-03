@@ -6,9 +6,9 @@
 
     <title>Moodtrackingapp</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application'%>
 
     <%= csrf_meta_tags %>
     <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
@@ -31,7 +31,7 @@
     <div class="row">
       <%= yield %>
     </div>
-    <%= javascript_include_tag 'foundation/foundation', 'data-turbolinks-track' => false, 'data-turbolinks-eval' => false %>
+    <%= javascript_include_tag 'foundation/foundation'%>
     <script>
       $(function(){ $(document).foundation(); });
     </script>
