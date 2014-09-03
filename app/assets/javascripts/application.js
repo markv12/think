@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require foundation/foundation
 //= require turbolinks
-//= require wordcount
 
 $(function(){ $(document).foundation(); });
