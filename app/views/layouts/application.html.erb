@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div id="LoggedInIndicator" class="row">
+    <div id="LoggedInIndicator">
       <% if current_user.nil? %>
         <p>You are not currently logged in <br/>
         <%= link_to 'Login', new_user_session_path %> |
