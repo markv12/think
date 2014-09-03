@@ -9,6 +9,7 @@ function calc_word_count(){
   var wordcount = text.split(" ").length
   $("#wordcount_indicator").html("Words: "+wordcount);
 }
+//alert("Here: "+$("#entry_area").length)
 $(function() {
   if($("#entry_area").length){
     calc_word_count();

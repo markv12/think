@@ -12,7 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation/foundation
 //= require turbolinks
-
-$(function(){ $(document).foundation(); });
