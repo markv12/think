@@ -1,6 +1,6 @@
 <div class="row">
   <div class="columns large-centered large-12">
-    <%= form_for(entry, url: user_entry_path(user, entry), remote: true) do |form| %>
+    <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
       <p>
         <%= form.text_area :text, id: "entry_area", autofocus:true%>
       </p>
@@ -19,4 +19,13 @@
     <% end %>
   </div>
   <%= javascript_include_tag 'wordcount'%>
+  <%= javascript_include_tag 'mousetrap.min'%>
+  <script>
+    $(function(){
+      Mousetrap.bindGlobal('mod+s', function(e) {
+        $("#entry_submit").click();
+        return false;
+      });
+    });
+  </script>
 </div>

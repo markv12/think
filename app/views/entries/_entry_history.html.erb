@@ -1,7 +1,11 @@
 <div class="row inline">
   <% for entry in entries %>
-      <a href=<%= user_entry_path(user, entry) %> class="inline">
-        <div class="inline entry_link"></div>
-      </a>
+    <a href=<%= entry_path(entry) %> class="inline">
+      <% if entry.text.to_s.strip.length == 0 %>
+        <div class="inline empty_entry_link"></div>
+      <% else %>
+          <div class="inline entry_link"></div>
+      <% end %>
+    </a>
   <% end %>
 </div>

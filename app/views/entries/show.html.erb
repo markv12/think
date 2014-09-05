@@ -1,9 +1,9 @@
 <div class="row">
   <div class="columns large-centered large-12">
-    <%= render partial: 'entries/entry_history', locals: {user: @user, entries: @user.entries} %>
-    <% todays_entry = @user.todays_entry() %>
+    <%= render partial: 'entries/entry_history', locals: {entries: current_user.entries} %>
+    <% todays_entry = current_user.todays_entry() %>
     <% if @entry == todays_entry %>
-      <%= render partial: 'entries/form', locals: {user: @user, entry: todays_entry}%>
+      <%= render partial: 'entries/form', locals: {entry: todays_entry}%>
     <% else %>
       <p id="entry_area">
         <%= @entry.text %>

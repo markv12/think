@@ -13,8 +13,16 @@
   width:30px;
   height:40px;
   background-color:#00CCFF;
-  border-radius:5px;
+  border-radius:6px;
 }
+
+.empty_entry_link{
+  width:30px;
+  height:40px;
+  border-radius:6px;
+  border: 4px solid #00CCFF;
+}
+
 .entry_link:hover{
   background-color:#00AACC;
 }
