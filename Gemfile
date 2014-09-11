@@ -36,7 +36,15 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pry'
+group :test, :development do
+  gem 'pry'
+  gem 'capybara'
+  gem 'minitest'
+  gem 'minitest-rails'
+  gem 'minitest-capybara'
+  gem 'database_cleaner'
+end
+
 gem 'haml'
 gem 'rails_12factor'
 gem 'authlogic'
