@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/entries/:id', to: 'entries#show', as: 'entry'
   patch '/entries/:id', to: 'entries#update', as: 'entry_update'
 
+  get '/assessments', to: 'assessments#index'
   resources :user_sessions
 end
