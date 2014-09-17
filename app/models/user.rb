@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :entries
-  has_many :assessments
+  has_many :entries, dependent: :destroy
+  has_and_belongs_to_many :assessments
+  has_many :assessment_responses, dependent: :destroy
 
   acts_as_authentic do |c|
     c.login_field = 'email'

@@ -1,14 +1,15 @@
 // Place all the styles related to the front_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-  text-align: center;
-}
 #main_image{
   border-radius:20px;
   height:400px;
   width:auto;
 }
+.centered{
+  text-align: center;
+}
+
 .main_content *{
   font-size:30px;
 }

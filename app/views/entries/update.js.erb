@@ -1,1 +1,13 @@
 $("#save_indicator").html("<small>Saved at: <%= entry.wordcount%> words<br/> <%= entry.updated_at.strftime "%Y-%m-%d %H:%M" %></small>");
+
+var last_entry_link = $("#entry_history").children().last().children().first()
+if (<%=entry.wordcount > 0 %>){
+  if(last_entry_link.hasClass("empty_entry_link")){
+    last_entry_link.switchClass( "empty_entry_link", "entry_link");
+  }
+}
+else{
+  if(last_entry_link.hasClass("entry_link")){
+    last_entry_link.switchClass( "entry_link", "empty_entry_link");
+  }
+}

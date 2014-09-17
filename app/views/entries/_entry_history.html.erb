@@ -1,4 +1,4 @@
-<div class="row inline">
+<div class="row inline" id="entry_history">
   <% for entry in entries %>
     <a href=<%= entry_path(entry) %> class="inline">
       <% if entry.text.to_s.strip.length == 0 %>

@@ -11,16 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916033549) do
+ActiveRecord::Schema.define(version: 20140917004331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assessments", force: true do |t|
+  create_table "answers", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "assessment_response_id"
+    t.text     "answer_text"
+    t.decimal  "answer_num",             precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assessment_responses", force: true do |t|
+    t.integer  "assessment_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assessments", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "assessments_users", id: false, force: true do |t|
+    t.integer "assessment_id"
+    t.integer "user_id"
   end
 
   create_table "entries", force: true do |t|
@@ -33,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140916033549) do
   create_table "questions", force: true do |t|
     t.integer  "assessment_id"
     t.text     "question_text"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   patch '/entries/:id', to: 'entries#update', as: 'entry_update'
 
   get '/assessments', to: 'assessments#index'
+  get '/assessment/:id', to: 'assessments#show', as: 'assessment'
+  get '/take_assessment/:id', to: 'assessments#take', as: 'take_assessment'
+  post '/submit_assessment', to: 'assessments#submit', as: 'submit_assessment'
+
   resources :user_sessions
 end

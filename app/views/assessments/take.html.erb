@@ -1,0 +1,7 @@
+<h1><%= @response.assessment.name %></h1>
+<%= form_for(@response, url: submit_assessment_path) do |form| %>
+  <%= form.fields_for :answers do |answer_form| %>
+      <%= answer_form.object.question.question_text %>: <%= answer_form.text_field :answer_text %>
+  <% end %>
+    <%= form.submit 'Submit', class: "button"%>
+<% end %>
