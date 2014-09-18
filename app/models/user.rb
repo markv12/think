@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   end # block optional
 
   def todays_entry()
-    if(self.entries.empty? || self.entries.last.created_at.to_date != Date.current)
+    if(self.entries.empty? || self.entries.sort_by(&:created_at).last.created_at.to_date != Date.current)
       self.entries.create!()
     end
     return self.entries.last
