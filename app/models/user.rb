@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     if(self.entries.empty? || self.entries.sort_by(&:created_at).last.created_at.to_date != Date.current)
       self.entries.create!()
     end
-    return self.entries.last
+    return self.entries.sort_by(&:created_at).last
   end
 
 end
