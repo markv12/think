@@ -12,7 +12,6 @@ class AssessmentsController < ApplicationController
   end
 
   def submit
-    binding.pry
     @response = AssessmentResponse.new(response_params)
     if @response.save
       flash[:notice] = "Response Successful"
@@ -23,6 +22,6 @@ class AssessmentsController < ApplicationController
   end
 
   def response_params
-    params.require(:assessment_response).permit(answers_attributes:[:id, :question_id, :answer_text, :answer_num])
+    params.require(:assessment_response).permit(answers_attributes:[:id, :question_id, :answer_text])
   end
 end

@@ -1,7 +1,11 @@
 <h1><%= @response.assessment.name %></h1>
 <%= form_for(@response, url: submit_assessment_path) do |form| %>
   <%= form.fields_for :answers do |answer_form| %>
-      <%= answer_form.object.question.question_text %>: <%= answer_form.text_field :answer_text %>
+    <br>
+    <%= answer_form.hidden_field :question_id, :value => answer_form.object.question_id %>
+    <%= answer_form.object.question.question_text %>:
+    <%= render partial: answer_form.object.partial_location, locals: {answer_form: answer_form} %>
   <% end %>
-    <%= form.submit 'Submit', class: "button"%>
+  <br>
+  <%= form.submit 'Submit', class: "button"%>
 <% end %>

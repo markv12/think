@@ -9,7 +9,6 @@ class Assessment < ActiveRecord::Base
     for question in questions
       answer = response.answers.new
       answer.question = question
-      answer
     end
     response
   end
