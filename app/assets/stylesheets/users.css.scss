@@ -1,36 +1,3 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#entry_area{
-  height:60vh;
-  font-size:20px;
-  border: 0 none white;
-  outline: none;
-  resize: none;
-}
-
-.entry_link{
-  width:30px;
-  height:40px;
-  background-color:#00CCFF;
-  border-radius:6px;
-}
-
-.empty_entry_link{
-  width:30px;
-  height:40px;
-  border-radius:6px;
-  border: 4px solid #00CCFF;
-}
-
-.entry_link:hover{
-  background-color:#00AACC;
-}
-
-#save_indicator small{
-  line-height: 1px !important;
-}
-
-#wordcount_indicator {
-  margin:0px;
-}
