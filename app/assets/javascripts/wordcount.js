@@ -6,7 +6,7 @@ function calc_word_count(){
   else{
     text = $("#entry_area").html().trim();
   }
-  var split_string = text.split(' ');
+  var split_string = text.split(' ').filter(function(element) {return element.length != 0});;
   var wordcount
   if(split_string.length == 1 && split_string[0] == ""){
     wordcount = 0
