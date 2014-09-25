@@ -20,10 +20,24 @@
   font-size: 12px;
   text-align:left;
   margin: 20px;
+  width:100%;
+  top:0px;
+}
+
+.page_content{
+}
+
+.no_vertical_margin{
+  margin-top:0px;
+  margin-bottom:0px;
+
+}
+.indented{
+  margin-left: 25px;
 }
 
 #entry_area{
-  height:60vh;
+  height:65vh;
   font-size:20px;
   resize: none;
   border: none;

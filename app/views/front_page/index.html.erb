@@ -1,30 +1,28 @@
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 <div class="main_content centered">
-  <p>Mood Tracking App</p>
-
   <br/>
-  <img id="main_image" src="http://deliveringhappiness.com/wp-content/uploads/2011/10/happyball.jpg" alt="Happy Thoughts" onclick="blackOut();">
+  <p style="font-size:111px" id="main_title">Mood Tracking App</p>
+
 </div>
 
 
 <script type="text/javascript">
-   blacked_out = false;
-   function blackOut(){
-      if(blacked_out){
-        d3.select("body").transition().duration(1000)
-            .style("background-color", "white");
-        d3.selectAll("p").transition().duration(1000)
-            .style("color", "black");
-        blacked_out = false;
-      }
-      else{
-        d3.select("body").transition().duration(1000)
-            .style("background-color", "black");
-        d3.selectAll("p").transition().duration(1000)
-            .style("color", "white");
-        blacked_out = true;
-      }
-
-   }
+  blacked_out = false;
+  $("#main_title").click(function(){
+    if(blacked_out){
+      d3.select("body").transition().duration(1000)
+          .style("background-color", "white");
+      d3.selectAll("p").transition().duration(1000)
+          .style("color", "black");
+      blacked_out = false;
+    }
+    else{
+      d3.select("body").transition().duration(1000)
+          .style("background-color", "black");
+      d3.selectAll("p").transition().duration(1000)
+          .style("color", "white");
+      blacked_out = true;
+    }
+  })
 </script>
