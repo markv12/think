@@ -4,6 +4,7 @@ class Answer < ActiveRecord::Base
 
   delegate :question_type, to: :question
   delegate :partial_location, to: :question
+  delegate :daily_partial_location, to: :question
   delegate :scale_min, to: :question
   delegate :scale_max, to: :question
 end

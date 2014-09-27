@@ -1,5 +1,6 @@
+<!-- This is a view for an assessment_response -->
 <h1><%= @response.assessment.name %></h1>
-<%= form_for(@response, url: submit_assessment_path) do |form| %>
+<%= form_for(@response, url: submit_response_path) do |form| %>
   <%= form.fields_for :answers do |answer_form| %>
     <br>
     <%= answer_form.hidden_field :question_id, :value => answer_form.object.question_id %>

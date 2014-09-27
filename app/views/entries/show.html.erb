@@ -5,7 +5,7 @@
     </div>
     <% todays_entry = current_user.todays_entry() %>
     <% if @entry == todays_entry %>
-      <%= render partial: 'entries/form', locals: {entry: todays_entry}%>
+      <%= render partial: 'entries/form', locals: {entry: @entry}%>
     <% else %>
       <p id="entry_area">
         <%= @entry.text %>

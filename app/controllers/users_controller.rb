@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def graph
+    @daily_assessment = current_user.daily_assessment
+  end
+
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
   end

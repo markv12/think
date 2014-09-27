@@ -1,0 +1,12 @@
+<p>Here will be graphs based on your <%= @daily_assessment.assessment_responses.count %> responses over time.</p>
+<br>
+<div id="d3_graph"></div>
+
+<script>
+  data=<%= @daily_assessment.questions.to_json.html_safe %>;
+  d3.select("#d3_graph").selectAll("p")
+    .data(data)
+    .enter()
+    .append("p")
+    .text(function(d) { return d.question_text; });
+</script>

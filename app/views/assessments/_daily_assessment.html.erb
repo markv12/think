@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="button no_vertical_margin", id="add_new_item_button">Add New Item to Track</div>
+</div>
+<div class="row", id="new_item_form", style="display:none">
+  <%= form_for(Question.new, url: add_question_path(assessment), remote: true) do |form| %>
+    <%= form.label :question_type, "Question Type" %>
+    <%= form.collection_select :question_type, Question.question_types, :first, :first, prompt: true %>
+    <%= form.label :question_text, "Question Text" %>
+    <%= form.text_field :question_text %>
+    <%= form.label :scale_min, "Minimum Value" %>
+    <%= form.text_field :scale_min %>
+    <%= form.label :scale_max, "Maximum Value" %>
+    <%= form.text_field :scale_max %>
+    <%= form.submit 'Add Item', class: "button"%>
+
+  <% end %>
+</div>
+<%= form_for(assessment.todays_response, url: update_response_path(assessment.todays_response), remote: true) do |form| %>
+  <%= form.hidden_field :user_id, :value => form.object.user_id %>
+  <%= form.hidden_field :assessment_id, :value => form.object.assessment_id %>
+  <%= form.fields_for :answers do |answer_form| %>
+    <br>
+    <%= answer_form.hidden_field :question_id, :value => answer_form.object.question_id %>
+    <%= answer_form.object.question.question_text %>:
+    <%= render partial: answer_form.object.daily_partial_location, locals: {answer_form: answer_form} %>
+  <% end %>
+  <br>
+  <div class="row">
+    <div class="columns large-3">
+      <p id="assessment_save_indicator"></p>
+    </div>
+    <div class="columns large-7">
+      <p></p>
+    </div>
+    <div class="columns large-2">
+      <%= form.submit 'Save', class: "button", id: "daily_assessment_submit"%>
+    </div>
+  </div>
+<% end %>
+<script>
+  $("#add_new_item_button").click(function(){
+    $("#new_item_form").show("blind", 500);
+
+  });
+</script>

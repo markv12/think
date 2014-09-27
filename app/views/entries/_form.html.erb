@@ -1,5 +1,12 @@
+<% unless entry.daily_assessment.nil? %>
+<div class="row">
+    <div class="columns large-centered large-12 panel", id="daily_assessment_panel">
+      <%= render partial: "assessments/daily_assessment", locals: {assessment: entry.user.daily_assessment} %>
+    </div>
+  </div>
+<% end %>
 <div class="row centered">
-  <div class="columns large-centered large-12">
+  <div class="columns large-centered large-12 panel", id="entry_panel">
     <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
       <p>
         <%= form.text_area :text, id: "entry_area", autofocus:true%>
@@ -24,6 +31,7 @@
     $(function(){
       Mousetrap.bindGlobal('mod+s', function(e) {
         $("#entry_submit").click();
+        $("#daily_assessment_submit").click();
         return false;
       });
     });

@@ -1,0 +1,33 @@
+<% answer = answer_form.object %>
+<% slider_id = "slider_"+ answer.question.id.to_s %>
+<% hidden_field_id = "hidden_"+ answer.question.id.to_s %>
+<% display_field_id = "display_"+ answer.question.id.to_s %>
+
+<%
+  if !answer.answer_text.nil?
+    slider_value = answer.answer_text.to_i
+  else
+    slider_value = (answer.scale_min+answer.scale_max)/2
+  end
+%>
+
+<%= answer_form.hidden_field :answer_text, id: hidden_field_id %>
+<p id="<%= display_field_id %>"></p>
+
+<div id=<%= slider_id %>></div>
+<script>
+  $(function() {
+    $( <%= slider_id %> ).slider({
+      value:<%= slider_value %>,
+      min: <%= answer.scale_min %>,
+      max: <%= answer.scale_max %>,
+      step: 1,
+      slide: function( event, ui ) {
+        $( <%= hidden_field_id %> ).val( ui.value );
+        $( <%= display_field_id %> ).html( ui.value );
+      }
+    });
+    $( <%= hidden_field_id %> ).val( $( <%= slider_id %> ).slider( "value" ) );
+    $( <%= display_field_id %> ).html( $( <%= slider_id %> ).slider( "value" ) );
+  });
+</script>

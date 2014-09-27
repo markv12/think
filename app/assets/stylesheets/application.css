@@ -98,6 +98,10 @@
 
 .panel{
   border-radius:10px;
+  background-color: #FFFFFF;
+}
+.saved_panel{
+  background-color: #DDFFDD;
 }
 
 .link-panel:hover {

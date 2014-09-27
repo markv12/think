@@ -52,5 +52,6 @@ gem 'rails_12factor'
 gem 'authlogic'
 gem 'scrypt'
 gem 'foundation-rails'
+gem "d3-rails"
 gem 'unicorn'
 
