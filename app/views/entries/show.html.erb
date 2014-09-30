@@ -3,6 +3,7 @@
     <div class="centered">
       <%= render partial: 'entries/entry_history', locals: {entries: current_user.entries} %>
     </div>
+    <br>
     <% todays_entry = current_user.todays_entry() %>
     <% if @entry == todays_entry %>
       <%= render partial: 'entries/form', locals: {entry: @entry}%>

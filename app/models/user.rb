@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   belongs_to :daily_assessment, :class_name => "Assessment", :foreign_key => "daily_assessment_id"
   has_many :assessment_responses, dependent: :destroy
 
+  after_create :add_daily_assessment
+
   acts_as_authentic do |c|
     c.login_field = 'email'
   end
@@ -14,5 +16,16 @@ class User < ActiveRecord::Base
       most_recent_entry = self.entries.create!()
     end
     return most_recent_entry
+  end
+
+  def add_daily_assessment
+    binding.pry
+    if self.valid? && self.daily_assessment.nil?
+      da = Assessment.new
+      da.name = self.name + "'s Daily Assessment"
+      self.daily_assessment = da
+      self.save
+      da.save
+    end
   end
 end

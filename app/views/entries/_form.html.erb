@@ -1,29 +1,38 @@
 <% unless entry.daily_assessment.nil? %>
 <div class="row">
-    <div class="columns large-centered large-12 panel", id="daily_assessment_panel">
-      <%= render partial: "assessments/daily_assessment", locals: {assessment: entry.user.daily_assessment} %>
+    <div class="columns large-6", id="daily_assessment_panel">
+      <div class="panel", id="trackerPanel">
+        <%= render partial: "assessments/daily_assessment", locals: {assessment: entry.user.daily_assessment} %>
+      </div>
+    </div>
+    <div class="columns large-6", id="daily_assessment_panel">
+      <div class="panel", id="habitPanel">
+        <p>Soon Habits may go here.</p>
+      </div>
     </div>
   </div>
 <% end %>
 <div class="row centered">
-  <div class="columns large-centered large-12 panel", id="entry_panel">
-    <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
-      <p>
-        <%= form.text_area :text, id: "entry_area", autofocus:true%>
-      </p>
-      <div class="row">
-        <div class="columns large-2">
-          <h4 class="inline" id="wordcount_indicator">  </h4>
-          <div id="save_indicator"></div>
+  <div class="columns large-centered large-12">
+    <div class="panel", id="entry_panel">
+      <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
+        <p>
+          <%= form.text_area :text, id: "entry_area", autofocus:true%>
+        </p>
+        <div class="row">
+          <div class="columns large-2">
+            <h4 class="inline" id="wordcount_indicator">  </h4>
+            <div id="save_indicator"></div>
+          </div>
+          <div class="columns large-8">
+            <p></p>
+          </div>
+          <div class="columns large-2">
+            <%= form.submit 'Save', class: "button", id: "entry_submit", class: "inline, button"%>
+          </div>
         </div>
-        <div class="columns large-8">
-          <p></p>
-        </div>
-        <div class="columns large-2">
-          <%= form.submit 'Save', class: "button", id: "entry_submit", class: "inline, button"%>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <%= javascript_include_tag 'wordcount'%>
   <%= javascript_include_tag 'mousetrap.min'%>
@@ -34,6 +43,19 @@
         $("#daily_assessment_submit").click();
         return false;
       });
+    });
+  </script>
+  <script>
+    $(function() {
+      trackerPanel = $("#trackerPanel");
+      habitPanel = $("#habitPanel");
+
+      var biggestHeight=trackerPanel.height();
+      if(habitPanel.height() > biggestHeight){
+        biggestHeight = habitPanel.height()
+      }
+
+      habitPanel.height(biggestHeight);
     });
   </script>
 </div>
