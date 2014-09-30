@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/display_flash' %>
     <div id="LoggedInIndicator">
       <% if current_user.nil? %>
         <p>You are not currently logged in <br/>
@@ -31,8 +32,6 @@
           <p class="no_vertical_margin"><%= link_to 'My Profile', me_path%></p>
         </div>
       <% end %>
-
-      <%= render 'layouts/display_flash' %>
     </div>
     <div class="row">
       <%= yield %>
