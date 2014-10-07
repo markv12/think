@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :assessment
+  belongs_to :question_category
   enum question_type: { text: 0, boolean: 1, scale: 2, multiple_choice: 3 }
   has_many :answers, dependent: :destroy
 

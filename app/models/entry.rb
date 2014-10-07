@@ -3,6 +3,10 @@ class Entry < ActiveRecord::Base
   delegate :daily_assessment, to: :user
 
   def wordcount
-    return text.strip.split(" ").length
+    if text.nil?
+      return 0
+    else
+      return text.strip.split(" ").length
+    end
   end
 end

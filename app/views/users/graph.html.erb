@@ -2,7 +2,10 @@
 <br>
 <h5>And based on these questions you have set to answer on a daily basis:</h5>
 <div id="d3_graph"></div>
+<br>
+<h3>Total Words Typed:</h3>
 
+<p><%= current_user.total_word_count %></p>
 <script>
   data=<%= @daily_assessment.questions.to_json.html_safe %>;
   d3.select("#d3_graph").selectAll("p")

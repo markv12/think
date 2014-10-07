@@ -28,4 +28,10 @@ class User < ActiveRecord::Base
       da.save
     end
   end
+
+  def total_word_count
+    self.entries.map{|e|
+      e.wordcount
+    }.inject(:+)
+  end
 end
