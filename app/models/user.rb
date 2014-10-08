@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   end
 
   def add_daily_assessment
-    binding.pry
     if self.valid? && self.daily_assessment.nil?
       da = Assessment.new
       da.name = self.name + "'s Daily Assessment"
