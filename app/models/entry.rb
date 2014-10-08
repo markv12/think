@@ -1,6 +1,11 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
   delegate :daily_assessment, to: :user
+  after_initialize :init
+
+  def init
+   self.text ||= ""
+  end
 
   def wordcount
     if text.nil?

@@ -4,8 +4,10 @@
 <div id="d3_graph"></div>
 <br>
 <h3>Total Words Typed:</h3>
-
 <p><%= current_user.total_word_count %></p>
+
+<h3>Total Unique Words:</h3>
+<p><%= current_user.total_unique_words %></p>
 <script>
   data=<%= @daily_assessment.questions.to_json.html_safe %>;
   d3.select("#d3_graph").selectAll("p")

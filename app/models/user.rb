@@ -34,4 +34,10 @@ class User < ActiveRecord::Base
       e.wordcount
     }.inject(:+)
   end
+
+  def total_unique_words
+    self.entries.map{|e|
+      e.text
+    }.inject(:+).scan(/[\w']+/).uniq.length
+  end
 end
