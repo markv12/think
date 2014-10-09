@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( wordcount.js )
 Rails.application.config.assets.precompile += %w( foundation/foundation.js )
 Rails.application.config.assets.precompile += %w( mousetrap.min.js )
+Rails.application.config.assets.precompile += %w( impulse.min.js )

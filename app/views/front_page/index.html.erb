@@ -1,9 +1,25 @@
+<%= javascript_include_tag 'impulse.min'%>
+
 <div class="main_content centered">
   <br/>
   <p style="font-size:111px" id="main_title">Mood Tracking App</p>
 </div>
 
 <script type="text/javascript">
+  var title = $('#main_title');
+  var position = title.position();
+  var titleImpulse = Impulse(title)
+    .style('translate', function(x, y) {
+      return x + 'px, ' + y + 'px'
+    });
+  var x = position.left;
+  var y = position.top;
+
+  titleImpulse.drag()
+    .on('end', function() {
+      titleImpulse.spring().to(0, 0).start()
+    });
+
   blacked_out = false;
   $("#main_title").click(function(){
     if(blacked_out){
