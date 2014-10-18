@@ -7,13 +7,15 @@
   <div class="columns large-12">
     <%= form_for(Question.new, url: add_question_path(assessment), remote: true) do |form| %>
       <%= form.label :question_type, "Question Type" %>
-      <%= form.collection_select :question_type, Question.question_types, :first, :first, prompt: true %>
+      <%= form.collection_select :question_type, Question.human_readable_question_types, :first, :last, {prompt: true}, {id:"question_type_select"} %>
       <%= form.label :question_text, "Question Text" %>
       <%= form.text_field :question_text %>
-      <%= form.label :scale_min, "Minimum Value" %>
-      <%= form.text_field :scale_min %>
-      <%= form.label :scale_max, "Maximum Value" %>
-      <%= form.text_field :scale_max %>
+      <div id="scale_options" style="display:none">
+        <%= form.label :scale_min, "Minimum Value" %>
+        <%= form.text_field :scale_min %>
+        <%= form.label :scale_max, "Maximum Value" %>
+        <%= form.text_field :scale_max %>
+      </div>
       <%= form.submit 'Add Item', class: "button"%>
       <a href="#", id="cancel_new_item">&nbsp;&nbsp;&nbsp;cancel</a>
     <% end %>
@@ -40,10 +42,24 @@
   </div>
 <% end %>
 <script>
-  $("#add_new_item_button").click(function(){
-    $("#new_item_form").show("blind", 500);
-  });
-  $("#cancel_new_item").click(function(){
-    $("#new_item_form").hide("blind", 500);
+  $(document).ready(function(){
+
+    $("#add_new_item_button").click(function(){
+      $("#new_item_form").show("blind", 500);
+    });
+    $("#cancel_new_item").click(function(){
+      $("#new_item_form").hide("blind", 500);
+    });
+    $("#question_type_select").change(function(){
+        $( "#question_type_select option:selected").each(function(){
+            if($(this).attr("value")=="boolean"){
+                $("#scale_options").hide("blind", 500);
+            }
+            else if($(this).attr("value")=="scale"){
+                $("#scale_options").show("blind", 500);
+
+            }
+        });
+    }).change();
   });
 </script>
