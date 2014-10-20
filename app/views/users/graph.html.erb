@@ -11,7 +11,7 @@
 
 <h3>Most Used Words:</h3>
 <% current_user.most_used_words.each do |k,v| %>
-  <span class="uniq_word" style="font-size:<%= (Math.log2(v)*5)+10 %>px"><%= k %>&nbsp;</span>
+  <span class="uniq_word" title="<%= v %>" style="font-size:<%= (Math.log2(v)*5)+10 %>px"><%= k %>&nbsp;</span>
 <% end %>
 
 <script>
