@@ -10,8 +10,12 @@
 <p><%= current_user.total_unique_words %></p>
 
 <h3>Most Used Words:</h3>
-<% current_user.most_used_words.each do |k,v| %>
-  <span class="uniq_word" title="<%= v %>" style="font-size:<%= (v/3)+12 %>px"><%= k %>&nbsp;</span>
+<%
+  most_used_words = current_user.most_used_words
+  adjustment_constant = 18.0/most_used_words.first[1]
+%>
+<% most_used_words.each do |k,v| %>
+  <span class="uniq_word" title="<%= v %>" style="font-size:<%= v*adjustment_constant +0.6%>em"><%= k %>&nbsp;</span>
 <% end %>
 
 <script>

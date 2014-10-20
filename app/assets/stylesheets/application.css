@@ -115,3 +115,7 @@
 .answer_form:hover{
   background-color: #AAAAAA;
 }
+
+.uniq_word{
+  line-height:0.7em;
+}
