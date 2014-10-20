@@ -11,7 +11,7 @@
 
 <h3>Most Used Words:</h3>
 <% current_user.most_used_words.each do |k,v| %>
-  <span style="font-size:<%= (Math.log(v)*5)+8 %>px"><%= k %></span>
+  <span class="uniq_word" style="font-size:<%= (Math.log2(v)*5)+8 %>px"><%= k %></span>
 <% end %>
 
 <script>
@@ -21,4 +21,16 @@
     .enter()
     .append("p")
     .text(function(d) { return d.question_text; });
+
+  function getRandomColor() {
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+          color += letters[Math.floor(Math.random() * 15)];
+      }
+      return color;
+  }
+  $(".uniq_word").each(function(){
+    $(this).css("color", getRandomColor());
+  });
 </script>
