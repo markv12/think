@@ -39,4 +39,17 @@ class User < ActiveRecord::Base
       e.text
     }.inject(:+).downcase.scan(/[\w']+/).uniq.length
   end
+
+  def most_used_words
+    counts = Hash.new(0)
+    all_text = self.entries.map{|e|
+        e.text
+      }.inject(:+).downcase.scan(/[\w']+/)
+
+    all_text.each do |v|
+      counts[v] += 1
+    end
+
+    counts.sort_by {|k,v| v}.reverse
+  end
 end
