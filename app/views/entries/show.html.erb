@@ -9,7 +9,7 @@
       <%= render partial: 'entries/form', locals: {entry: @entry}%>
     <% else %>
       <p id="entry_area">
-        <%= @entry.text %>
+        <%= newline_to_br(@entry.text) %>
       </p>
       <div class="row">
         <div class="columns large-8">

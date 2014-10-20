@@ -7,7 +7,7 @@
   if !answer.answer_text.nil?
     slider_value = answer.answer_text.to_i
   else
-    slider_value = (answer.scale_min+answer.scale_max)/2
+    slider_value = answer.scale_min
   end
 %>
 
