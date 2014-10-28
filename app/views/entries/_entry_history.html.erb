@@ -1,6 +1,6 @@
 <div class="row inline" id="entry_history">
   <% for entry in entries.sort_by &:created_at %>
-    <a href=<%= entry_path(entry) %> class="inline">
+    <a href=<%= entry_path(entry) %> title="<%= entry.created_at.strftime "%Y-%m-%d %H:%M" %>" class="inline">
       <% if entry.text.to_s.strip.length == 0 %>
         <div class="inline empty_entry_link"></div>
       <% else %>
