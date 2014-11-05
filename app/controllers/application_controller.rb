@@ -18,4 +18,14 @@ class ApplicationController < ActionController::Base
      redirect_to(session[:return_to] || default)
      session[:return_to] = nil
    end
+
+   def authenticate_admin
+      current_user_admin = false
+      if current_user
+        if current_user.admin
+          current_user_admin = true
+        end
+      end
+      redirect_to new_user_session_path unless current_user_admin
+   end
 end

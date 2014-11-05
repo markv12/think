@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001224947) do
+ActiveRecord::Schema.define(version: 20141105035039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,19 @@ ActiveRecord::Schema.define(version: 20141001224947) do
     t.integer "user_id"
   end
 
+  create_table "categories", force: true do |t|
+    t.text     "name"
+    t.text     "abbreviation"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_questions", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "question_id"
+  end
+
   create_table "entries", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -49,25 +62,15 @@ ActiveRecord::Schema.define(version: 20141001224947) do
     t.integer  "user_id"
   end
 
-  create_table "question_categories", force: true do |t|
-    t.text     "name"
-    t.text     "abbreviation"
-    t.text     "description"
-    t.boolean  "positive"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "questions", force: true do |t|
     t.integer  "assessment_id"
     t.text     "question_text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "question_type",        default: 0
-    t.integer  "scale_min",            default: 0
+    t.integer  "question_type", default: 0
+    t.integer  "scale_min",     default: 0
     t.integer  "scale_max"
-    t.text     "options",                          array: true
-    t.integer  "question_category_id"
+    t.text     "options",                   array: true
   end
 
   create_table "user_sessions", force: true do |t|
@@ -81,15 +84,15 @@ ActiveRecord::Schema.define(version: 20141001224947) do
   add_index "user_sessions", ["updated_at"], name: "index_user_sessions_on_updated_at", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                default: "", null: false
-    t.string   "crypted_password",                 null: false
-    t.string   "password_salt",                    null: false
-    t.string   "email",                            null: false
-    t.string   "persistence_token",                null: false
-    t.string   "single_access_token",              null: false
-    t.string   "perishable_token",                 null: false
-    t.integer  "login_count",         default: 0,  null: false
-    t.integer  "failed_login_count",  default: 0,  null: false
+    t.string   "name",                default: "",    null: false
+    t.string   "crypted_password",                    null: false
+    t.string   "password_salt",                       null: false
+    t.string   "email",                               null: false
+    t.string   "persistence_token",                   null: false
+    t.string   "single_access_token",                 null: false
+    t.string   "perishable_token",                    null: false
+    t.integer  "login_count",         default: 0,     null: false
+    t.integer  "failed_login_count",  default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -98,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141001224947) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "daily_assessment_id"
+    t.boolean  "admin",               default: false
   end
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root 'front_page#index'
 
   get '/me', to: 'users#show'
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   post '/new_question/:id', to: 'assessments#add_question', as: 'add_question'
 
   resources :user_sessions
+  get '/logout', to: 'user_sessions#destroy', as: 'destroy_user_session'
 end

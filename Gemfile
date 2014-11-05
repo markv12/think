@@ -54,4 +54,4 @@ gem 'scrypt'
 gem 'foundation-rails'
 gem "d3-rails"
 gem 'unicorn'
-
+gem 'activeadmin', github: 'activeadmin'
