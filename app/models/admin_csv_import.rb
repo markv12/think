@@ -9,10 +9,8 @@ class AdminCsvImport
         column_iterator = -1
         target_model.column_names.each do |key|
           column_iterator += 1
-          unless (key == "id" || key == "ID")
-            value = row[column_iterator]
-            new_object.send "#{key}=", value
-          end
+          value = row[column_iterator]
+          new_object.send "#{key}=", value
         end
         new_object.save
       end
