@@ -27,6 +27,6 @@ ActiveAdmin.register Category do
 
    collection_action :import_csv, :method => :post do
      AdminCsvImport.convert_save("category", params[:dump][:file])
-     redirect_to :action => :index, :notice => "CSV imported successfully!"
+     redirect_to :action => :index
    end
 end

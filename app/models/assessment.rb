@@ -3,6 +3,11 @@ class Assessment < ActiveRecord::Base
   has_one :user, :foreign_key => :daily_assessment_id
   has_many :questions, dependent: :destroy
   has_many :assessment_responses, dependent: :destroy
+  accepts_nested_attributes_for :questions, allow_destroy: true
+
+  def self.non_daily_assessments
+    self.where.not("name like ?", "%'s Daily Assessment%")
+  end
 
   def create_empty_response
     response = assessment_responses.new
