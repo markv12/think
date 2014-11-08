@@ -1,10 +1,11 @@
 ActiveAdmin.register Question do
-  permit_params :assessment_id, :question_text, :question_type, :scale_min, :scale_max, :_destroy
+  permit_params :assessment_id, :question_text, :question_type, :scale_min, :scale_max, :_destroy, category_ids: []
 
   form do |f|
     f.inputs "Question Information" do
       f.input :assessment, :as => :select, :collection => Assessment.non_daily_assessments
       f.input :question_type, :as => :select, :collection => Question.human_readable_question_types.keys
+      f.input :categories,:as => :select, :input_html => {:multiple => true}
       f.input :question_text, :input_html => {:rows => 2, :cols => 10}
       f.input :scale_min
       f.input :scale_max
