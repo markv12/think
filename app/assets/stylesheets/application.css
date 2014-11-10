@@ -120,3 +120,7 @@
 .uniq_word{
   line-height:0.8em;
 }
+
+.button{
+  border-radius:5px !important;
+}
