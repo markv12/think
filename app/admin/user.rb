@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :email, :admin
+  permit_params :name, :email, :admin, assessment_ids: []
 
   index do
     column :name
@@ -12,9 +12,11 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "User Information" do
+      f.input :admin
       f.input :name, :input_html => {:rows => 1, :cols => 10}
       f.input :email, :input_html => {:rows => 1, :cols => 10}
-      f.input :admin
+      f.input :assessments,:as => :select, :input_html => {:multiple => true}, :collection => Assessment.non_daily_assessments
+
     end
     f.actions
   end
