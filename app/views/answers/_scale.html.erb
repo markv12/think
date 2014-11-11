@@ -3,6 +3,14 @@
 <% hidden_field_id = "hidden_"+ answer.question.id.to_s %>
 <% display_field_id = "display_"+ answer.question.id.to_s %>
 
+<%
+  if !answer.answer_text.nil?
+    slider_value = answer.answer_text.to_i
+  else
+    slider_value = answer.scale_min
+  end
+%>
+
 <%= answer_form.hidden_field :answer_text, id: hidden_field_id %>
 <p id="<%= display_field_id %>"></p>
 
@@ -10,7 +18,7 @@
 <script>
   $(function() {
     $( <%= slider_id %> ).slider({
-      value:<%= (answer.scale_min+answer.scale_max)/2 %>,
+      value:<%= slider_value %>,
       min: <%= answer.scale_min %>,
       max: <%= answer.scale_max %>,
       step: 1,

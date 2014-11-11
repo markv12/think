@@ -29,7 +29,7 @@
     <br>
       <%= answer_form.hidden_field :question_id, :value => answer_form.object.question_id %>
       <%= answer_form.object.question.question_text %>:
-      <%= render partial: answer_form.object.daily_partial_location, locals: {answer_form: answer_form} %>
+      <%= render partial: answer_form.object.partial_location, locals: {answer_form: answer_form} %>
   <% end %>
   <br>
   <div class="row">
