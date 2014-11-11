@@ -6,8 +6,6 @@ ActiveAdmin.register User do
     column :email
     column :admin
     column :login_count
-    column :current_login_at
-    column :last_login_at
     column :last_request_at
     actions
   end
