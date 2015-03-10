@@ -9,12 +9,12 @@
     <% end %>
     <p>
       <%= form.label :email %>
-      <%= form.text_field :email %>
+      <%= form.email_field :email, :required => "required" %>
     </p>
 
     <p>
       <%= form.label :password %>
-      <%= form.password_field :password %>
+      <%= form.password_field :password, :required => "required" %>
     </p>
 
     <%= form.submit 'Login', class: "button"%>
