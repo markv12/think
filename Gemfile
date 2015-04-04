@@ -45,6 +45,7 @@ group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-capybara'
   gem 'database_cleaner'
+  gem 'rack-mini-profiler'
 end
 
 gem 'haml'
