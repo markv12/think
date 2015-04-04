@@ -2,11 +2,11 @@
   <div class="columns large-12">
     <div class="panel", id="habitPanel">
       <div class="row">
-        <% Habit.all.each do |habit| %>
+        <% Habit.includes(:categories).all.each do |habit| %>
           <div class="columns large-4 medium-6 end">
             <div class="panel">
-              <h4><%= habit.name %></h4>
-              <h6><%= habit.categories.first.name %></h6>
+              <h5><%= habit.name %></h5>
+              <p><%= habit.categories.first.name %></p>
               <p><%= truncate(habit.description, :length => 100, :separator => ' ') %></p>
             </div>
           </div>
