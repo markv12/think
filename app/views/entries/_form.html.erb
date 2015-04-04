@@ -1,7 +1,15 @@
 <div class="row">
   <div class="columns large-12">
     <div class="panel", id="habitPanel">
-      <p></p>
+      <div class="row">
+        <% Habit.all.each do |habit| %>
+          <div class="columns large-4 medium-6">
+            <h4><%= habit.name %></h4>
+            <h6><%= habit.categories.first.name %></h6>
+            <p><%= habit.description %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
