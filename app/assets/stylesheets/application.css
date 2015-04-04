@@ -21,7 +21,7 @@
 #LoggedInIndicator{
   font-size: 12px;
   text-align:left;
-  margin: 20px 0px 20px 20px;
+  margin: 20px 0px 0px 20px;
   width:100%;
   top:0px;
 }
@@ -32,7 +32,6 @@
 .no_vertical_margin{
   margin-top:0px;
   margin-bottom:0px;
-
 }
 .indented{
   margin-left: 25px;
