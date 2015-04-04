@@ -1,12 +1,10 @@
-<% unless entry.daily_assessment.nil? %>
 <div class="row">
-    <div class="columns large-12", id="daily_assessment_panel">
-      <div class="panel", id="habitPanel">
-        <p>Soon Habits may go here.</p>
-      </div>
+  <div class="columns large-12">
+    <div class="panel", id="habitPanel">
+      <p></p>
     </div>
   </div>
-<% end %>
+</div>
 <div class="row centered">
   <div class="columns large-centered large-12">
     <div class="panel", id="entry_panel">
@@ -35,7 +33,6 @@
     $(function(){
       Mousetrap.bindGlobal('mod+s', function(e) {
         $("#entry_submit").click();
-        $("#daily_assessment_submit").click();
         return false;
       });
     });
