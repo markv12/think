@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def graph
-    @daily_assessment = current_user.daily_assessment
+
   end
 
   def user_params

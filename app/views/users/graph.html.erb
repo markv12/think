@@ -1,8 +1,3 @@
-<h3>Here will be graphs based on your <%= @daily_assessment.assessment_responses.count %> responses over time.</h3>
-<br>
-<h5>And based on these questions you have set to answer on a daily basis:</h5>
-<div id="d3_graph"></div>
-<br>
 <h3>Total Words Typed:</h3>
 <p><%= current_user.total_word_count %></p>
 
@@ -14,18 +9,11 @@
   most_used_words = current_user.most_used_words
   adjustment_constant = 18.0/most_used_words.first[1]
 %>
-<% most_used_words.each do |k,v| %>
-  <span class="uniq_word" title="<%= v %>" style="font-size:<%= v*adjustment_constant +0.6%>em"><%= k %>&nbsp;</span>
+<% most_used_words.each do |word ,v| %>
+  <span class="uniq_word" title="<%= v %>" style="font-size:<%= v*adjustment_constant +0.6%>em"><%= word %>&nbsp;</span>
 <% end %>
 
 <script>
-  data=<%= @daily_assessment.questions.to_json.html_safe %>;
-  d3.select("#d3_graph").selectAll("p")
-    .data(data)
-    .enter()
-    .append("p")
-    .text(function(d) { return d.question_text; });
-
   function getRandomColor() {
       var letters = '0123456789ABCDEF'.split('');
       var color = '#';
