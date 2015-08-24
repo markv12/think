@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   def todays_entry
     most_recent_entry = self.entries.sort_by(&:created_at).last
     if(most_recent_entry.nil? || most_recent_entry.created_at.to_date != Date.current)
-      most_recent_entry = self.entries.new!()
+      most_recent_entry = self.entries.new()
     end
     return most_recent_entry
   end
