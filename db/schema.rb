@@ -11,31 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404183132) do
+ActiveRecord::Schema.define(version: 20160823190652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "answers", force: true do |t|
-    t.integer  "question_id"
-    t.integer  "assessment_response_id"
-    t.text     "answer_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "assessment_responses", force: true do |t|
-    t.integer  "assessment_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "assessments", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "assessments_users", id: false, force: true do |t|
     t.integer "assessment_id"
@@ -65,24 +44,6 @@ ActiveRecord::Schema.define(version: 20150404183132) do
     t.datetime "updated_at"
     t.text     "text"
     t.integer  "user_id"
-  end
-
-  create_table "habits", force: true do |t|
-    t.text     "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "questions", force: true do |t|
-    t.integer  "assessment_id"
-    t.text     "question_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "question_type", default: 0
-    t.integer  "scale_min",     default: 0
-    t.integer  "scale_max"
-    t.text     "options",                   array: true
   end
 
   create_table "user_sessions", force: true do |t|
