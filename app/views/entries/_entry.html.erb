@@ -18,7 +18,7 @@
       </div>
     <% end %>
     <div class="centered">
-      <%= render partial: 'entries/entry_history', locals: {entries: current_user.entries} %>
+      <%= render partial: 'entries/entry_history', locals: {entries: current_user.entries, current_entry: entry} %>
     </div>
   </div>
 </div>
