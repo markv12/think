@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.1.2"
+ruby "2.3.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.10'
@@ -49,7 +49,6 @@ group :test, :development do
   gem 'rack-mini-profiler'
 end
 
-gem 'haml'
 gem 'rails_12factor'
 gem 'authlogic'
 gem 'scrypt'
