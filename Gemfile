@@ -5,7 +5,7 @@ ruby "2.3.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.10'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.21.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -52,7 +52,7 @@ end
 gem 'rails_12factor'
 gem 'authlogic'
 gem 'scrypt'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.3.1'
 gem "d3-rails"
 gem 'unicorn'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '1.0.0.pre5'
