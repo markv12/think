@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   helper UsersHelper 
-  before_filter :login_required, :only => :show
+  before_filter :login_required, :only => [:show, :graph, :timeline]
 
   def index
   end
@@ -29,12 +29,18 @@ class UsersController < ApplicationController
 
   def timeline
     @entries = Entry.where('user_id=?', current_user.id).sort_by(&:updated_at)
-    @earliest_time = @entries.first.updated_at.to_i
-    @time_range = @entries.last.updated_at.to_i - @earliest_time
+    first_date = @entries.first.updated_at
+    last_date = @entries.last.updated_at
+
+
+    @earliest_time = first_date.to_i
+    @time_range = last_date.to_i - @earliest_time
     if(@time_range == 0)
       @time_range = 1;
     end
-    @total_entry_height = @entries.count * 10;
+    @total_entry_height = @entries.count * 20;
+
+    @month_ticks = all_months_between(first_date, last_date)
   end
 
   def user_params
@@ -48,5 +54,17 @@ class UsersController < ApplicationController
       flash[:error] = 'You must be logged in to view this page.'
       redirect_to new_user_session_path
     end
+  end
+
+  def all_months_between(to, from)
+    from, to = to, from if from > to
+    m = Date.new from.year, from.month
+    result = []
+    while m <= to
+      result << m.to_time
+      m >>= 1
+    end
+
+    result
   end
 end

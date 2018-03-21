@@ -1,8 +1,14 @@
-<h3>Start:</h3>
 <% @entries.each do |entry|  %>
   <% pos_from_start = entry.updated_at.to_i - @earliest_time %>
-  <% pos = lerp(0, @total_entry_height, (pos_from_start/@time_range)) %>
+  <% pos = lerp(0, @total_entry_height, (pos_from_start.to_f/@time_range)) %>
   <p style="position: absolute; top:<%= pos %>px;">
-    <%= entry.updated_at.strftime("%F") %>
+    ⚫
+  </p>
+<% end %>
+<% @month_ticks.each do |month| %>
+  <% pos_from_start = month.to_i - @earliest_time %>
+  <% pos = lerp(0, @total_entry_height, (pos_from_start.to_f/@time_range)) %>
+  <p style="position: absolute; top:<%= pos %>px;">
+    ────── <%= month.strftime("%B %Y") %>
   </p>
 <% end %>
