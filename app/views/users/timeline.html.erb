@@ -5,7 +5,7 @@
   <% word_count_fraction = min(word_count.to_f, 3000) / 3000 %>
   <% font_size = lerp(3, 40, word_count_fraction)  %>
   <% left_adjust = 415 + lerp(0, 60, word_count_fraction)  %>
-  <p style="position: absolute; top:<%= pos %>px; left:<%= left_adjust %>px; font-size:<%= font_size %>px;" title="<%= word_count %>">
+  <p style="position: absolute; top:<%= pos %>px; left:<%= left_adjust %>px; font-size:<%= font_size %>px;" title="<%= word_count %> <%= entry.updated_at.strftime("%B %d, %Y") %>">
     ⬤
   </p>
 <% end %>
