@@ -1,14 +1,18 @@
 <% @entries.each do |entry|  %>
   <% pos_from_start = entry.updated_at.to_i - @earliest_time %>
   <% pos = lerp(0, @total_entry_height, (pos_from_start.to_f/@time_range)) %>
-  <p style="position: absolute; top:<%= pos %>px;">
-    ⚫
+  <% word_count = entry.wordcount %>
+  <% word_count_fraction = min(word_count.to_f, 3000) / 3000 %>
+  <% font_size = lerp(3, 40, word_count_fraction)  %>
+  <% left_adjust = 415 + lerp(0, 60, word_count_fraction)  %>
+  <p style="position: absolute; top:<%= pos %>px; left:<%= left_adjust %>px; font-size:<%= font_size %>px;" title="<%= word_count %>">
+    ⬤
   </p>
 <% end %>
 <% @month_ticks.each do |month| %>
   <% pos_from_start = month.to_i - @earliest_time %>
   <% pos = lerp(0, @total_entry_height, (pos_from_start.to_f/@time_range)) %>
   <p style="position: absolute; top:<%= pos %>px;">
-    ────── <%= month.strftime("%B %Y") %>
+    ──────── <%= month.strftime("%B %Y") %>
   </p>
 <% end %>
