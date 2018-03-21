@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/me', to: 'users#show'
   get '/user_graph', to:'users#graph', as: 'user_graph'
+  get '/user_timeline', to:'users#timeline', as: 'user_timeline'
   get '/users/new', to: 'users#new', as: 'new_user'
   post '/users', to: 'users#create'
   get '/entries/:id', to: 'entries#show', as: 'entry'
