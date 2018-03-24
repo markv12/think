@@ -4,7 +4,8 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
   def create
-    @user_session = UserSession.new(params[:user_session])
+    the_params = params.require(:user_session).permit(:email, :password)
+    @user_session = UserSession.new(the_params.to_h)
     if @user_session.save
       if current_user.admin
         redirect_to '/admin'
