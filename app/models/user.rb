@@ -18,28 +18,24 @@ class User < ActiveRecord::Base
     return most_recent_entry
   end
 
-  def total_word_count
-    self.entries.map{|e|
-      e.wordcount
-    }.inject(:+)
-  end
+  def word_info
+    result = {}
 
-  def total_unique_words
-    self.entries.map{|e|
-      e.text
-    }.inject(:+).downcase.scan(/[\w']+/).uniq.length
-  end
-
-  def most_used_words
+    word_count = 0
+    all_text = ""
     counts = Hash.new(0)
-    all_text = self.entries.map{|e|
-        e.text
-      }.inject(:+).downcase.scan(/[\w']+/)
-
-    all_text.each do |v|
+    self.entries.each do |entry|
+      word_count += entry.wordcount
+      all_text += entry.text
+    end
+    lower_text = all_text.downcase.scan(/[\w']+/)
+    lower_text.each do |v|
       counts[v] += 1
     end
 
-    counts.sort_by {|k,v| v}.reverse
+    result[:word_count] = word_count
+    result[:uniq_words] = all_text.downcase.scan(/[\w']+/).uniq.length
+    result[:most_used] = counts.sort_by {|k,v| v}.reverse
+    result
   end
 end

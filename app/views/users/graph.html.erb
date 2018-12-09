@@ -1,10 +1,11 @@
+<% word_info = current_user.word_info %>
 <div class="cell large-12">
-  <h3>Total Words Typed: <%= number_with_delimiter(current_user.total_word_count, delimiter: ',') %></h3>
-  <h3>Total Unique Words: <%= number_with_delimiter(current_user.total_unique_words, delimiter: ',') %></h3>
+  <h3>Total Words Typed: <%= number_with_delimiter(word_info[:word_count], delimiter: ',') %></h3>
+  <h3>Total Unique Words: <%= number_with_delimiter(word_info[:uniq_words], delimiter: ',') %></h3>
   <h3>Most Used Words:</h3>
 </div>
 <%
-  most_used_words = current_user.most_used_words
+  most_used_words = word_info[:most_used]
   adjustment_constant = 1
   if(!most_used_words.empty?)
     adjustment_constant = 18.0/most_used_words.first[1]
