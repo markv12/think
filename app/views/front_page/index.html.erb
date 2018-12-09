@@ -3,7 +3,7 @@
 <% if current_user %>
   <%= render partial: 'entries/entry', locals: {entry: current_user.todays_entry()} %>
 <% else %>
-  <div class="main_content centered">
+  <div class="cell main_content centered">
     <br/>
     <p style="font-size:111px" id="main_title">Think</p>
   </div>
