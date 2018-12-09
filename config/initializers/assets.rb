@@ -7,6 +7,5 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( wordcount.js )
-Rails.application.config.assets.precompile += %w( foundation/foundation.js )
 Rails.application.config.assets.precompile += %w( mousetrap.min.js )
 Rails.application.config.assets.precompile += %w( impulse.min.js )

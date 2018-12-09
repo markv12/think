@@ -8,9 +8,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all'%>
 
-    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag 'application'%>
-    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
     <%= csrf_meta_tags %>
     <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
@@ -18,7 +16,7 @@
 
   <body>
     <%= render 'layouts/display_flash' %>
-    <div id="LoggedInIndicator">
+    <div id="LoggedInIndicator" style="font-size: 18px;">
       <% if current_user.nil? %>
         <p>You are not currently logged in <br/>
         <%= link_to 'Login', new_user_session_path %> |
@@ -30,14 +28,14 @@
         <div class="indented">
           <p class="no_vertical_margin"><%= link_to 'Home', root_path%></p>
           <p class="no_vertical_margin"><%= link_to 'Stats', user_graph_path%></p>
-          <p class="no_vertical_margin"><%= link_to 'Timeline', user_timeline_path%></p>
         </div>
       <% end %>
     </div>
-    <div class="row">
-      <%= yield %>
+    <div class="grid-container">
+      <div class="grid-x">
+        <%= yield %>
+      </div>
     </div>
-    <%= javascript_include_tag 'foundation/foundation'%>
     <script>
       $(function(){ $(document).foundation(); });
     </script>

@@ -1,10 +1,8 @@
-<h3>Total Words Typed:</h3>
-<p><%= current_user.total_word_count %></p>
-
-<h3>Total Unique Words:</h3>
-<p><%= current_user.total_unique_words %></p>
-
-<h3>Most Used Words:</h3>
+<div class="cell large-12">
+  <h3>Total Words Typed: <%= number_with_delimiter(current_user.total_word_count, delimiter: ',') %></h3>
+  <h3>Total Unique Words: <%= number_with_delimiter(current_user.total_unique_words, delimiter: ',') %></h3>
+  <h3>Most Used Words:</h3>
+</div>
 <%
   most_used_words = current_user.most_used_words
   adjustment_constant = 1

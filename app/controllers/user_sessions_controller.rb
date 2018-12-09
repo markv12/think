@@ -7,12 +7,8 @@ class UserSessionsController < ApplicationController
     the_params = params.require(:user_session).permit(:email, :password)
     @user_session = UserSession.new(the_params.to_h)
     if @user_session.save
-      if current_user.admin
-        redirect_to '/admin'
-      else
-        flash[:notice] = "Login successful!"
-        redirect_back_or_default me_path
-      end
+      flash[:notice] = "Login successful!"
+      redirect_back_or_default me_path
     else
       render :action => :new
     end
