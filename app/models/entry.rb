@@ -2,16 +2,21 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   delegate :daily_assessment, to: :user
   after_initialize :init
+  before_save :cache_stats
 
   def init
    self.text ||= ""
   end
 
-  def wordcount
-    if text.nil?
-      return 0
-    else
-      return text.strip.split(" ").length
-    end
+  def cache_stats
+    self.wordcount = calculate_wordcount
+  end
+
+  def calculate_wordcount
+    get_text.strip.split(" ").length
+  end
+
+  def get_text
+    text.nil? ? "" : text
   end
 end

@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
 
   def word_info
     result = {}
-
     word_count = 0
     all_text = ""
     counts = Hash.new(0)
@@ -34,7 +33,7 @@ class User < ActiveRecord::Base
     end
 
     result[:word_count] = word_count
-    result[:uniq_words] = all_text.downcase.scan(/[\w']+/).uniq.length
+    result[:uniq_words] = lower_text.uniq.length
     result[:most_used] = counts.sort_by {|k,v| v}.reverse
     result
   end

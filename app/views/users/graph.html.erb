@@ -4,27 +4,37 @@
   <h3>Total Unique Words: <%= number_with_delimiter(word_info[:uniq_words], delimiter: ',') %></h3>
   <h3>Most Used Words:</h3>
 </div>
-<%
-  most_used_words = word_info[:most_used]
-  adjustment_constant = 1
-  if(!most_used_words.empty?)
-    adjustment_constant = 18.0/most_used_words.first[1]
-  end
-%>
-<% most_used_words.each do |word ,v| %>
-  <span class="uniq_word" title="<%= v %>" style="font-size:<%= v*adjustment_constant +0.6%>em"><%= word %>&nbsp;</span>
-<% end %>
 
+<span id="word_container"></span>
 <script>
-  function getRandomColor() {
-      var letters = '0123456789ABCDEF'.split('');
-      var color = '#';
-      for (var i = 0; i < 6; i++ ) {
-          color += letters[Math.floor(Math.random() * 15)];
-      }
-      return color;
-  }
-  $(".uniq_word").each(function(){
-    $(this).css("color", getRandomColor());
+  var data = <%= word_info[:most_used].to_json.html_safe %>;
+  $( document ).ready(function() {
+    setTimeout(function() {
+      GenerateMostUsedWords(data);
+    }, 100);
   });
+
+function GenerateMostUsedWords(data){
+  var adjustment_constant = 1
+  if(data.length > 0){
+    adjustment_constant = 18.0/data[0][1]
+  }
+  var word_container = $("#word_container");
+  var result = "";
+  for (var i = 0; i < data.length; i++) {
+    var wordcount = data[i][1];
+    var font_size = (wordcount*adjustment_constant) + 0.6
+    result += "<span class='uniq_word' title='" + wordcount + "' style='font-size:" + font_size + "em; color:" + getRandomColor() + ";'>" + data[i][0] + " </span>";
+  }
+  word_container.append(result);
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+      color += letters[Math.floor(Math.random() * 15)];
+  }
+  return color;
+}
 </script>
