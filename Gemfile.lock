@@ -160,7 +160,7 @@ DEPENDENCIES
   pg (= 0.21.0)
   pry
   rack-mini-profiler
-  rails (~> 4.2.10)
+  rails (~> 4.2.11)
   rails_12factor
   sass-rails
   scrypt
@@ -169,7 +169,7 @@ DEPENDENCIES
   unicorn
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.4.5p335
 
 BUNDLED WITH
-   1.16.6
+   1.17.3

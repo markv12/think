@@ -1,5 +1,4 @@
-<div class="cell large-centered large-6">
-
+<div class="cell large-centered large-12">
   <%= form_for(user, url: users_path) do |form| %>
     <% if user.errors.any? %>
       <ul>
@@ -9,22 +8,22 @@
       </ul>
     <% end %>
     <p>
-      <%= form.label :email %>
+      <%= form.label :email, :class => "text-left" %>
       <%= form.email_field :email, :required => "required" %>
     </p>
 
     <p>
-      <%= form.label :password %>
+      <%= form.label :password, :class => "text-left" %>
       <%= form.password_field :password, :required => "required" %>
     </p>
 
     <p>
-      <%= form.label :password_confirmation %>
+      <%= form.label :password_confirmation, :class => "text-left" %>
       <%= form.password_field :password_confirmation, :required => "required" %>
     </p>
 
     <p>
-      <%= form.label :name %>
+      <%= form.label :name, :class => "text-left" %>
       <%= form.text_field :name, :required => "required" %>
     </p>
     <%= form.submit 'Sign Up', class: "button"%>
