@@ -3,7 +3,7 @@
     <div class="callout", id="entry_panel">
       <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
         <p>
-          <%= form.text_area :text, id: "entry_area", autofocus:true%>
+          <textarea id="entry_area" autofocus="autofocus" name="entry[text]"></textarea>
         </p>
         <div class="grid-x">
           <div class="cell large-2">
@@ -15,6 +15,8 @@
           </div>
           <div class="cell large-2">
             <%= form.submit 'Save', class: "button", id: "entry_submit", class: "inline, button", style:"width:90px; height:60px; font-size:1.1em;"%>
+            <span id="speech_recog_container"></span>
+            <img id="speech_recog_off_img" style="margin-left:25px; width: 25px;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAEAAAABdCAYAAAAVIWCbAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGYmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTA5LTI5VDE2OjQ4OjI4KzA5OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0wOS0yOVQxNjo1NjozNCswOTowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0wOS0yOVQxNjo1NjozNCswOTowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3NDUwYTNlNC1jOGIzLTgyNDktYTUyYi1jNjA5YTExMjJhMzIiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo3NTA0OWJmNi04YzhlLTYxNDctOTZhMy1mMWIzMjVmYjA4NDQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDplNTQ3MWVmMS0xOGE1LTE5NGUtOTBhNi03Y2ZjOWZhZTY5OGIiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmU1NDcxZWYxLTE4YTUtMTk0ZS05MGE2LTdjZmM5ZmFlNjk4YiIgc3RFdnQ6d2hlbj0iMjAxOS0wOS0yOVQxNjo0ODoyOCswOTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjb252ZXJ0ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9wbmciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjc0NTBhM2U0LWM4YjMtODI0OS1hNTJiLWM2MDlhMTEyMmEzMiIgc3RFdnQ6d2hlbj0iMjAxOS0wOS0yOVQxNjo1NjozNCswOTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpZja/kAAAR+SURBVHja7ZxpSFVBFMfVzPadsqBXUEEQkdJqRval+pAEbUZi2kqafci+CCmEUUGbPSsyoazIopUKCpEwKCoxKlLCksqINop2tYVK6gydCw95c+fc630z82we/PHDOzNzzs/77ixnZiJ8Pl+EJHUDpYD8oArQC9B30A/QK9Bl0G7QIlBPWX7JaCQOdAb0C/SHqBbQBdD4cAYwEFTuIGiervj+fcIKQIYHgbdWZrgAKAxB8JaKdQewP4TBWzqiK4B8CcFb2qIbgOkSg7c0WycA9QoAPAPF6AAgV0HwljaqBtARR3SqALwD9VAJIF1h8JayVAI4rQGAS6oAdFD8+Ft6jxMt6QDiNAjeUqIKAHM1ApCmAsAqjQCsVQFgjUYAcg0AA8AAMAAMAAPAADAADAADwAAwAAwAA8AAMADcAOgPGgEain/7tSMAfQNiGw6KbQ3gJKfiA+0AwB5OGbYDJZoZ7BVUXhDGAERpu1Jm9FZgVBXGACpFqTVm1Cgwqg1jAFWCco0GgAFgABgABoAB8J8D+Cgwut/eATwUGD0HRWmeHs/hAKimAKgQGLH9/AOCVD5PIwCLXe5ffMmMSgkNjAtSebxGAKYE8Y8duvgiKHeXusc3GOFoPOmhOvgPoO5B/BtDKHueGc4nGBZxHrGzGgAo5/iWSijrZ4bDCIY1nEaWagAgm+NbEeUQhmVc6/I90Bn0WmHwrAvvzQFQRyg/0TIuJhhv5jSUpxAA79xAEqEs2+TZwSowh1gghrNjtEFB8OzJ68oBUEIofyJwUTSG+EZfzWkwWQGAFI4vQ0A/CeUzWi+L7yMUeordX7CGN0kMvtBmFdhPKP/JencEFpxAbHyDTeOHJQR/yqZ96uDsIC8zRD3oGK/o5JjoxNhVYj2TeQBmEiu4J3AkS+KEx1IBsZ6LotzgJWJFRwUOsc91DwK/heksu7YWOKgvSQRgnIPKthISkAmEGSfvzPBUQv3THNR5jJod3ukxhAh866bj7PMG6DHoDeoJ6Cb+xpcRErOWZjjw8ytosJP0eJ2DystcpqejbbrVCI/fM5lO9wdMctjAg1Aecw9QJHaFTnw76XaDRLaL325eCINPISxytFY9nm90vUPE7wICyzgv9zDw2fiEOfWjSdSDUB0oc9mFNeH+g0SHv/UoHJluw9Ohbtpu8RGu4HDyXzjexv68Cbu2HTipWoiTqGR8tLPwO5bT/9zGtn4jQM83SZX49FkItVskGRXKXWLrNA7+DqiXjG1yCbgaq1Pw21WcHT6kQeBPfW24b8iLLoqtv99WEHijzQqVkktUknA8L2MtMAefQC3vERoJ2oVJVa+C/gY6B5rltb+hHrePBa1nKSjQIx/9PjF2J8A1BMlGgZ1C5aOsm+QsrSQEny/TJ9kA0txOWw0AA8AAMAB0BBCL2aAaXL6uslEldoUiAA1oa1dXNbZZFmyhUxaASMIOM1mXqnVRASBVo5ngCnNqzAAwAKQDWKIRgGwVAPq0YcnaS7HV5kGqxgGjsT9mjjTjKo0MNWObdTjldh3DX+3ImgSWJzKMAAAAAElFTkSuQmCC">
           </div>
         </div>
       <% end %>
@@ -29,5 +31,32 @@
         return false;
       });
     });
+
+    var off_img = document.getElementById('speech_recog_off_img')
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = true;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+
+      off_img.onclick = function() {
+        console.log("clicked");
+        recognition.start();
+      };
+
+      recognition.onresult = function(e) {
+        document.getElementById('entry_area').value += e.results[0][0].transcript;
+      };
+
+      recognition.onerror = function(e) {
+        alert("Speech Recognition Error Encountered");
+        recognition.stop();
+      }
+    } else{
+      console.log("Speech Recognition Not Available");
+      off_img.style.display = 'none';
+    }
   </script>
 </div>
