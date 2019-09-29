@@ -3,7 +3,7 @@
     <div class="callout", id="entry_panel">
       <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
         <p>
-          <textarea id="entry_area" autofocus="autofocus" name="entry[text]"></textarea>
+          <textarea id="entry_area" autofocus="autofocus" name="entry[text]"><%= entry.text %></textarea>
         </p>
         <div class="grid-x">
           <div class="cell large-2">
