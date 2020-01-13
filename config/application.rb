@@ -22,6 +22,6 @@ module Think
     config.filter_parameters += [:password]
     config.filter_parameters += [:password_confirmation]
 
-    config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Asia/Tokyo"
   end
 end
