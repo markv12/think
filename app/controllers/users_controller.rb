@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   helper UsersHelper 
-  before_filter :login_required, :only => [:show, :graph, :timeline]
+  before_action :login_required, only: [:show, :graph, :timeline]
 
   def index
   end

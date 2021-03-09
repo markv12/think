@@ -1,4 +1,4 @@
-class Entry < ActiveRecord::Base
+class Entry < ApplicationRecord
   belongs_to :user
   delegate :daily_assessment, to: :user
   after_initialize :init
