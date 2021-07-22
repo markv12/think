@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby "2.7.3"
+ruby "2.7.4"
 
-gem 'rails', '6.1.3.1'
+gem 'rails', '6.1.4'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -19,6 +20,8 @@ group :test, :development do
   gem 'pry'
   gem 'database_cleaner'
   gem 'rack-mini-profiler'
+  gem 'ruby-prof'
+  gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
 end
 
 gem 'rails_12factor'

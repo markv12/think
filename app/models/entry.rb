@@ -13,7 +13,7 @@ class Entry < ApplicationRecord
   end
 
   def calculate_wordcount
-    get_text.strip.split(" ").length
+    get_text.scan(/[\w']+/).length
   end
 
   def get_text

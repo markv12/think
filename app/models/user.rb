@@ -22,19 +22,16 @@ class User < ApplicationRecord
   def word_info
     result = {}
     word_count = 0
-    all_text = ""
     counts = Hash.new(0)
     self.entries.each do |entry|
       word_count += entry.wordcount
-      all_text += entry.text
-    end
-    lower_text = all_text.downcase.scan(/[\w']+/)
-    lower_text.each do |v|
-      counts[v] += 1
+      entry.text.downcase.scan(/[\w']+/).each do |v|
+        counts[v] += 1
+      end
     end
 
     result[:word_count] = word_count
-    result[:uniq_words] = lower_text.uniq.length
+    result[:uniq_words] = counts.size
     result[:most_used] = counts.sort_by {|k,v| v}.reverse
     result
   end
