@@ -193,7 +193,7 @@ body {
   margin: 0;
   padding: 0;
   background: #fefefe;
-  font-family: 'Open Sans', sans-serif;  font-weight: normal;
+  font-family: 'Lato', sans-serif;  font-weight: normal;
   line-height: 1.5;
   color: #0a0a0a;
   -webkit-font-smoothing: antialiased;
@@ -302,7 +302,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: 'Open Sans', sans-serif;  font-style: normal;
+  font-family: 'Lato', sans-serif; font-style: normal;
   font-weight: normal;
   color: inherit;
   text-rendering: optimizeLegibility; }
@@ -3936,8 +3936,6 @@ html.is-reveal-open {
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
-
 
 
 

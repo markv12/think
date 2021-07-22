@@ -11,8 +11,6 @@
  * file per style scope.
  *
  *= require front_page
- *= require user_sessions
- *= require users
  *= require foundation
  *= require_self
  */
