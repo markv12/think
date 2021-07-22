@@ -3,42 +3,23 @@
 <% if current_user %>
   <%= render partial: 'entries/entry', locals: {entry: current_user.todays_entry()} %>
 <% else %>
-  <div class="cell main_content centered">
+  <div class="main_content centered">
     <br/>
     <p style="font-size:111px" id="main_title">Think</p>
   </div>
 
   <script type="text/javascript">
-    var title = $('#main_title');
-    var position = title.position();
+    var title = document.getElementById('main_title');
     var titleImpulse = Impulse(title)
       .style('translate', function(x, y) {
         return x + 'px, ' + y + 'px'
       });
-    var x = position.left;
-    var y = position.top;
+    var x = title.offsetLeft;
+    var y = title.offsetTop;
 
     titleImpulse.drag()
       .on('end', function() {
         titleImpulse.spring().to(0, 0).start()
       });
-
-    blacked_out = false;
-    $("#main_title").click(function(){
-      if(blacked_out){
-        d3.select("body").transition().duration(1000)
-            .style("background-color", "white");
-        d3.selectAll("p").transition().duration(1000)
-            .style("color", "black");
-        blacked_out = false;
-      }
-      else{
-        d3.select("body").transition().duration(1000)
-            .style("background-color", "black");
-        d3.selectAll("p").transition().duration(1000)
-            .style("color", "white");
-        blacked_out = true;
-      }
-    })
   </script>
 <% end %>

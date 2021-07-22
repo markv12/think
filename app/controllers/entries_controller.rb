@@ -3,9 +3,9 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
     respond_to do |format|
       if @entry.update(entry_params)
-        format.js { render "update", :locals => {entry: @entry} }
+        format.js { render "update", locals: {entry: @entry} }
       else
-        format.js { render "update", :locals => {entry: @entry} }
+        format.js { render "update", locals: {entry: @entry} }
       end
     end
   end

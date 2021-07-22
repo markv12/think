@@ -8,7 +8,7 @@
 <span id="word_container"></span>
 <script>
   var data = <%= word_info[:most_used].to_json.html_safe %>;
-  $( document ).ready(function() {
+  docReady(function() {
     setTimeout(function() {
       GenerateMostUsedWords(data);
     }, 100);
@@ -19,14 +19,14 @@ function GenerateMostUsedWords(data){
   if(data.length > 0){
     adjustment_constant = 18.0/data[0][1]
   }
-  var word_container = $("#word_container");
+  var word_container = document.getElementById("word_container");
   var result = "";
   for (var i = 0; i < data.length; i++) {
     var wordcount = data[i][1];
     var font_size = (wordcount*adjustment_constant) + 0.6
     result += "<span class='uniq_word' title='" + wordcount + "' style='font-size:" + font_size + "em; color:" + getRandomColor() + ";'>" + data[i][0] + " </span>";
   }
-  word_container.append(result);
+  word_container.innerHTML = result;
 }
 
 function getRandomColor() {

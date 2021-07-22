@@ -16,9 +16,9 @@
   <%= javascript_include_tag 'wordcount'%>
   <%= javascript_include_tag 'mousetrap.min'%>
   <script>
-    $(function(){
+    docReady(function(){
       Mousetrap.bindGlobal('mod+s', function(e) {
-        $("#entry_submit").click();
+        document.getElementById("entry_submit").click();
         return false;
       });
     });
