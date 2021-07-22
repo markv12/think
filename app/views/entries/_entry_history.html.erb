@@ -1,4 +1,4 @@
-<div class="grid-x inline" id="entry_history">
+<div class="inline" id="entry_history">
   <% for entry in entries.sort_by &:created_at %>
     <a href=<%= entry_path(entry) %> title="<%= entry.created_at.strftime "%B %d, %Y" %>" class="inline">
       <% if entry.text.to_s.strip.length == 0 %>

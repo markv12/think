@@ -18,7 +18,7 @@
 
   <body>
     <%= render 'layouts/display_flash' %>
-    <div id="LoggedInIndicator" style="font-size: 18px;">
+    <div id="LoggedInIndicator">
       <% if current_user.nil? %>
         <p>You are not currently logged in <br/>
         <%= link_to 'Login', new_user_session_path %> |
@@ -33,13 +33,10 @@
         </div>
       <% end %>
     </div>
-    <div class="grid-container">
-      <div class="grid-x">
+    <div class="flex_container">
+      <div class="main_column">
         <%= yield %>
       </div>
     </div>
-    <script>
-      $(function(){ $(document).foundation(); });
-    </script>
   </body>
 </html>

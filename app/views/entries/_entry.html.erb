@@ -1,18 +1,15 @@
-<div class="grid-x">
-  <div class="cell large-centered large-12">
+<div>
+  <div>
     <br>
     <% todays_entry = current_user.todays_entry() %>
     <% if entry == todays_entry %>
       <%= render partial: 'entries/form', locals: {entry: entry}%>
     <% else %>
-      <p id="entry_area">
-        <%= newline_to_br(entry.text) %>
-      </p>
-      <div class="grid-x">
-        <div class="cell large-8">
-        <p></p>
-        </div>
-        <div class="cell large-2">
+      <div>
+        <p id="entry_area">
+          <%= newline_to_br(entry.text) %>
+        </p>
+        <div>
           <h4 class="inline" id="wordcount_indicator">  </h4>
         </div>
       </div>
