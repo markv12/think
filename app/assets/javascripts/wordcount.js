@@ -20,7 +20,7 @@ function calc_word_count(){
 
 docReady(function() {
   let entry_area = document.getElementById("entry_area");
-  if(entry_area && entry_area.value.length){
+  if(entry_area){
     calc_word_count();
     entry_area.addEventListener('input', function() { calc_word_count(); }, false);
     entry_area.addEventListener('propertychange', function() { calc_word_count(); }, false);
