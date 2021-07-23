@@ -7,25 +7,26 @@
         <% end %>
       </ul>
     <% end %>
-    <p>
-      <%= form.label :email, :class => "text-left" %>
-      <%= form.email_field :email, :required => "required" %>
-    </p>
-
-    <p>
-      <%= form.label :password, :class => "text-left" %>
-      <%= form.password_field :password, :required => "required" %>
-    </p>
-
-    <p>
-      <%= form.label :password_confirmation, :class => "text-left" %>
-      <%= form.password_field :password_confirmation, :required => "required" %>
-    </p>
-
-    <p>
-      <%= form.label :name, :class => "text-left" %>
-      <%= form.text_field :name, :required => "required" %>
-    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= form.label :email, class: "text-left" %></td>
+          <td><%= form.email_field :email, required: "required" %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :password, class: "text-left" %></td>
+          <td><%= form.password_field :password, required: "required" %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :password_confirmation, 'Password Confirmation', class: "text-left" %></td>
+          <td><%= form.password_field :password_confirmation, required: "required" %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :name, class: "text-left" %></td>
+          <td><%= form.text_field :name, required: "required" %></td>
+        </tr>
+      </tbody>
+    </table>
     <%= form.submit 'Sign Up', class: "button"%>
   <% end %>
 

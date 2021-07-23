@@ -1,3 +1,19 @@
+/* line 4, app/assets/stylesheets/front_page.css.scss */
+#main_image {
+  border-radius: 20px;
+  height: 400px;
+  width: auto;
+}
+
+/* line 9, app/assets/stylesheets/front_page.css.scss */
+.centered {
+  text-align: center;
+}
+
+/* line 13, app/assets/stylesheets/front_page.css.scss */
+.main_content * {
+  font-size: 30px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,8 +26,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require front_page
- *= require_self
+
+
  */
 
 body {

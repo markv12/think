@@ -7,16 +7,18 @@
         <% end %>
       </ul>
     <% end %>
-    <p>
-      <%= form.label :email %>
-      <%= form.email_field :email, :required => "required" %>
-    </p>
-
-    <p>
-      <%= form.label :password %>
-      <%= form.password_field :password, :required => "required" %>
-    </p>
-
+    <table>
+      <tbody>
+        <tr>
+          <td><%= form.label :email %></td>
+          <td><%= form.email_field :email, required: "required" %></td>
+        </tr>
+        <tr>
+          <td><%= form.label :password %></td>
+          <td><%= form.password_field :password, :required => "required" %></td>
+        </tr>
+      </tbody>
+    </table>
     <%= form.submit 'Login', class: "button"%>
   <% end %>
 </div>
