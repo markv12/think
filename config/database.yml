@@ -16,5 +16,4 @@ test:
 
 production:
   <<: *default
-  database: think_production
-  password: <%= ENV['THINK_DATABASE_PASSWORD'] %>
+  database: think_development
