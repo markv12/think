@@ -18,6 +18,8 @@ group :test, :development do
   gem 'pry'
   gem 'database_cleaner'
   gem 'rack-mini-profiler'
+  gem 'flamegraph'
+  gem 'stackprof'
   gem 'ruby-prof'
   gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
 end
