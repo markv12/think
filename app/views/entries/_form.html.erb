@@ -3,11 +3,11 @@
     <%= form_for(entry, url: entry_path(entry), remote: true) do |form| %>
       <textarea id="entry_area" autofocus="autofocus" name="entry[text]"><%= entry.text %></textarea>
       <div style="display: flex; justify-content: space-between;">
-        <div style="margin: 0px 33px 0px 33px;">
+        <div id="wordcount_container">
           <h4 class="inline" id="wordcount_indicator">  </h4>
           <div id="save_indicator"></div>
         </div>
-        <div style="margin: 0px 33px 0px 33px;">
+        <div id="save_button_container">
           <%= form.submit 'Save', class: "button", id: "entry_submit", class: "inline, button", style:"width:90px; height:60px;"%>
         </div>
       </div>

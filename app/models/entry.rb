@@ -13,10 +13,6 @@ class Entry < ApplicationRecord
   end
 
   def calculate_wordcount
-    get_text.scan(/[\p{Alpha}\-']+/).length
-  end
-
-  def get_text
-    text.nil? ? "" : text
+    (text.nil? ? "" : (text + " ")).scan(/\s+/).length
   end
 end

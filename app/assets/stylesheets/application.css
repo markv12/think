@@ -161,6 +161,14 @@ a {
   background-color: #DDFFDD;
 }
 
+#save_button_container {
+  margin: 0px 33px 0px 33px;
+}
+
+#wordcount_container {
+  margin: 0px 30px 0px 30px;
+}
+
 .link-panel {
   display: flex;
   justify-content: center;

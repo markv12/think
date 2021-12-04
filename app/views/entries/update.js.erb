@@ -1,1 +1,4 @@
-document.getElementById("save_indicator").innerHTML = "<small>Saved at: <%= entry.wordcount%> words<br/> <%= Time.now.strftime "%Y-%m-%d %H:%M" %></small>";
+var d = new Date(0);
+d.setUTCSeconds(<%= Time.now.to_i %>);
+var time_string = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes();
+document.getElementById("save_indicator").innerHTML = "<small>Saved at: <%= entry.wordcount %> words<br/> " + time_string + "</small>";
