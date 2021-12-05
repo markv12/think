@@ -1,4 +1,5 @@
 var d = new Date(0);
 d.setUTCSeconds(<%= Time.now.to_i %>);
-var time_string = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes();
+var time_string = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()
++ " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
 document.getElementById("save_indicator").innerHTML = "<small>Saved at: <%= entry.wordcount %> words<br/> " + time_string + "</small>";
