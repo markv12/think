@@ -14,13 +14,14 @@
     <% end %>
   </div>
   <%= javascript_include_tag 'wordcount'%>
-  <%= javascript_include_tag 'mousetrap.min'%>
   <script>
     docReady(function(){
-      Mousetrap.bindGlobal('mod+s', function(e) {
-        document.getElementById("entry_submit").click();
-        return false;
-      });
+      document.addEventListener("keydown", function(e) {
+        if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
+          e.preventDefault();
+          document.getElementById("entry_submit").click();
+        }
+      }, false);
     });
   </script>
 </div>
