@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "2.7.5"
+ruby "2.7.6"
 
-gem 'rails', '6.1.4.4'
+gem 'rails', '6.1.5.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -21,7 +21,7 @@ group :test, :development do
   gem 'flamegraph'
   gem 'stackprof'
   gem 'ruby-prof'
-  gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
+  #gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
 end
 
 gem 'rails_12factor'
