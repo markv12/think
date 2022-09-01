@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "2.7.5"
+ruby "3.1.2"
 
-gem 'rails', '6.1.4.1'
+gem 'rails', '6.1.6.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -21,10 +21,14 @@ group :test, :development do
   gem 'flamegraph'
   gem 'stackprof'
   gem 'ruby-prof'
-  gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
+  #gem 'ruby-prof-flamegraph', git: 'git://github.com/oozou/ruby-prof-flamegraph.git'
 end
 
 gem 'rails_12factor'
 gem 'authlogic'
 gem 'scrypt'
 gem 'unicorn'
+gem 'webrick', require: false
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
