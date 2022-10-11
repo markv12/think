@@ -1,0 +1,9 @@
+<div class="inline" id="entry_history">
+  <% for entry in @entries %>
+    <% if entry.text.to_s.strip.length > 0 %>
+      <a href="<%= entry_path(entry) %>" class="entry_link" title="<%= entry.wordcount %>">
+        <%= entry.created_at.strftime "%b %d, %Y" %>
+      </a>
+    <% end %>
+  <% end %>
+</div>

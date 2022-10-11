@@ -28,8 +28,9 @@
         <p class="no_vertical_margin">You are logged in as: <%= link_to current_user.name, me_path %>.
         (<%= link_to 'Logout', user_session_path(current_user_session), :method => :delete %>)</p>
         <div class="indented">
-          <p class="no_vertical_margin"><%= link_to 'Home', root_path%></p>
-          <p class="no_vertical_margin"><%= link_to 'Stats', user_graph_path%></p>
+          <p class="no_vertical_margin"><%= link_to 'Today\'s Entry', entry_path(current_user.todays_entry()) %></p>
+          <p class="no_vertical_margin"><%= link_to 'History', entry_history_path %></p>
+          <p class="no_vertical_margin"><%= link_to 'Stats', user_graph_path %></p>
         </div>
       <% end %>
     </div>

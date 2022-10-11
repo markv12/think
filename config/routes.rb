@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/entries/:id', to: 'entries#show', as: 'entry'
   patch '/entries/:id', to: 'entries#update', as: 'entry_update'
+  get '/entry_history', to:'users#entry_history', as: 'entry_history'
 
   get '/assessments', to: 'assessments#index'
   get '/assessment/:id', to: 'assessments#show', as: 'assessment'

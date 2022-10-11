@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6, input, textarea {
 
 a {
   line-height: inherit;
-  color: #1779ba;
+  color: #00AAFF;
   text-decoration: none;
   cursor: pointer; }
   a:hover, a:focus {
@@ -57,6 +57,11 @@ a {
 .flex_container {
   display: flex;
   justify-content: center;
+}
+
+.flex_column_centered {
+  flex-direction: column;
+  align-items: center;
 }
 
 .main_column {
@@ -102,27 +107,16 @@ a {
 
 .entry_link {
   border-radius:7px;
-}
-
-.full_entry_link {
-  width:30px;
-  height:40px;
+  margin-bottom: 5px;
+  padding: 0 5px 0 5px;
+  color: #FFFFFF;
   background-color:#00AAFF;
-}
-
-.current_entry_link {
-  background-color:#0088cc;
-}
-
-.empty_entry_link {
-  width:22px;
-  height:32px;
-  border: 4px solid #00AAFF;
-
+  display:inline-block;
 }
 
 .entry_link:hover {
   background-color:#0088cc;
+  color: #FFFFFF;
 }
 
 #save_indicator small{
@@ -135,11 +129,11 @@ a {
 }
 
 #flash .info_box {
-  background-color: #FFFFAA;
+  background-color: #b1ffb0;
   border-radius:10px;
-  border: 3px solid #333333;
+  border: 1px solid #333333;
   display: inline-block;
-  padding: 0px 5px 0px 5px;
+  padding: 2px 7px 2px 7px;
   margin: 20px 0px 0px 20px;
 }
 #flash .error_box {
@@ -180,7 +174,8 @@ a {
 }
 
 .link-panel:hover {
-  background-color: #AAAAAA;
+  background-color: #00AAFF;
+  color: #FFFFFF;
 }
 
 .answer_form:hover {
