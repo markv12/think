@@ -1,5 +1,5 @@
-<span class="centered">
-  <h2 style="font-size: 1.75em;">Hello <%=h @user.name %></h2>
+<span class="flex_column_centered">
+  <h2 class="centered" style="font-size: 1.75em;">Hello <%=h @user.name %></h2>
   <br>
   <%= render partial:'menu', locals: {user: @user} %>
 </span>

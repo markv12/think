@@ -1,14 +1,11 @@
-<div class="flex_container">
-  <div>
-    <a href="<%=entry_path(user.todays_entry())%>">
-    <div class="panel link-panel" >
-      &nbsp; <h2 style="margin-bottom:22px">Today's&nbsp;Entry</h2>
-    </div></a>
-  </div>
-  <div>
-    <a href="<%=user_graph_path %>">
-    <div class="panel link-panel" >
-      &nbsp; <h2 style="margin-bottom:22px">Stats</h2>
-    </div></a>
-  </div>
+<div class="flex_container flex_column_centered">
+  <a href="<%=entry_path(user.todays_entry())%>" class="panel link-panel">
+    <h2>Today's&nbsp;Entry</h2>
+  </a>
+  <a href="<%= entry_history_path %>" class="panel link-panel">
+    <h2>History</h2>
+  </a>
+  <a href="<%=user_graph_path %>" class="panel link-panel">
+    <h2>Stats</h2>
+  </a>
 </div>

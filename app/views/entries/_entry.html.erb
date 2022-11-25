@@ -1,6 +1,5 @@
 <div>
   <div>
-    <br>
     <% todays_entry = current_user.todays_entry() %>
     <% if entry == todays_entry %>
       <%= render partial: 'entries/form', locals: {entry: entry}%>
@@ -14,8 +13,5 @@
         </div>
       </div>
     <% end %>
-    <div class="centered">
-      <%= render partial: 'entries/entry_history', locals: {entries: current_user.entries, current_entry: entry} %>
-    </div>
   </div>
 </div>

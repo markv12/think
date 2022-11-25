@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   helper UsersHelper 
-  before_action :login_required, only: [:show, :graph, :timeline]
+  before_action :login_required, only: [:show, :graph, :timeline, :entry_history]
 
   def index
   end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def graph
-
+    @word_info = current_user.word_info
   end
 
   def timeline
@@ -47,6 +47,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
   end
 
+  def entry_history
+    @entries = current_user.entries.order('entries.created_at DESC')
+  end
 
   private
   def login_required
