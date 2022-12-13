@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'csv'
   helper UsersHelper 
   before_action :login_required, only: [:show, :graph, :timeline, :entry_history]
 
@@ -49,6 +50,18 @@ class UsersController < ApplicationController
 
   def entry_history
     @entries = current_user.entries.order('entries.created_at DESC')
+  end
+
+  def export_all_entries
+    @user = User.find(params[:user_id])
+    csv_string = CSV.generate do |csv|
+      csv << ['Date', 'Text']
+      @user.entries.each do |entry|
+        csv << [entry.created_at.strftime("%b %d, %Y"), entry.text]
+      end
+    end
+
+    send_data csv_string, filename: current_user.name + '_export.csv'
   end
 
   private

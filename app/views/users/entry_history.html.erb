@@ -1,3 +1,7 @@
+<a href="<%= export_all_entries_path(current_user) %>" class="button"> 
+  Export
+</a>
+<br><br>
 <div class="inline" id="entry_history">
   <% for entry in @entries %>
     <% if entry.text.to_s.strip.length > 0 %>

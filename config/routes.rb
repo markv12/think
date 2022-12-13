@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/entries/:id', to: 'entries#show', as: 'entry'
   patch '/entries/:id', to: 'entries#update', as: 'entry_update'
   get '/entry_history', to:'users#entry_history', as: 'entry_history'
+  get '/export_all_entries/:user_id', to:'users#export_all_entries', as: 'export_all_entries'
 
   get '/assessments', to: 'assessments#index'
   get '/assessment/:id', to: 'assessments#show', as: 'assessment'
