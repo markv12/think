@@ -14,25 +14,28 @@
   });
 
 function GenerateMostUsedWords(data){
-  var adjustment_constant = 1
+  var adjustmentConstant = 1
   if(data.length > 0){
-    adjustment_constant = 18.0/data[0][1]
+    adjustmentConstant = 18.0/data[0][1]
   }
-  var word_container = document.getElementById("word_container");
-  var result = "";
+  var wordContainer = document.getElementById("word_container");
+  var htmlFragments = [];
   for (var i = 0; i < data.length; i++) {
-    var wordcount = data[i][1];
-    var font_size = (wordcount*adjustment_constant) + 0.6
-    result += "<span class='uniq_word' title='" + wordcount + "' style='font-size:" + font_size + "em; color:" + getRandomColor() + ";'>" + data[i][0] + " </span>";
+    var [word, wordcount] = data[i];
+    var fontSize = (wordcount*adjustmentConstant) + 0.6
+    htmlFragments.push(
+      `<span class='uniq_word' title='${wordcount}' style='font-size:${fontSize}em; color:${getRandomColor()};'>${word} </span>`
+    );
   }
-  word_container.innerHTML = result;
+  wordContainer.innerHTML = htmlFragments.join("");
 }
 
+//const letters = '0123456789ABCDEF'.split('');
+const letters = '56789ABCDEF'.split('');
 function getRandomColor() {
-  var letters = '0123456789ABCDEF'.split('');
   var color = '#';
   for (var i = 0; i < 6; i++ ) {
-      color += letters[Math.floor(Math.random() * 15)];
+      color += letters[Math.floor(Math.random() * 10)];
   }
   return color;
 }

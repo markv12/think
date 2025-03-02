@@ -5,6 +5,7 @@ class User < ApplicationRecord
     c.login_field = 'email'
     c.crypto_provider = ::Authlogic::CryptoProviders::SCrypt
   end
+  validates :email, uniqueness: { case_sensitive: false }
 
   def todays_entry
     most_recent_entry = self.entries.sort_by(&:created_at).last
