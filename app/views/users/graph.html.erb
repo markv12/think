@@ -28,11 +28,12 @@ function GenerateMostUsedWords(data){
   word_container.innerHTML = result;
 }
 
+//const letters = '0123456789ABCDEF'.split('');
+const letters = '56789ABCDEF'.split('');
 function getRandomColor() {
-  var letters = '0123456789ABCDEF'.split('');
   var color = '#';
   for (var i = 0; i < 6; i++ ) {
-      color += letters[Math.floor(Math.random() * 15)];
+      color += letters[Math.floor(Math.random() * 10)];
   }
   return color;
 }
