@@ -8,16 +8,20 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
 
   def todays_entry
-    most_recent_entry = self.entries.sort_by(&:created_at).last
-    if(most_recent_entry.nil?)
-      most_recent_entry = self.entries.create!()
-    elsif(most_recent_entry.created_at.to_date != Date.current)
-      if(most_recent_entry.wordcount == 0)
-        most_recent_entry.destroy
+    @todays_entry ||= begin
+      most_recent_entry = entries.order(created_at: :desc).limit(1).first
+
+      if most_recent_entry.nil?
+        most_recent_entry = entries.create! 
+      elsif most_recent_entry.created_at.in_time_zone.to_date != Date.current
+        if most_recent_entry.wordcount.to_i.zero?
+          most_recent_entry.destroy 
+        end
+        most_recent_entry = entries.create!
       end
-      most_recent_entry = self.entries.create!()
+
+      most_recent_entry
     end
-    return most_recent_entry
   end
 
   def word_info
