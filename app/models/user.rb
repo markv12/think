@@ -25,19 +25,24 @@ class User < ApplicationRecord
   end
 
   def word_info
-    result = {}
-    word_count = 0
-    counts = Hash.new(0)
-    self.entries.each do |entry|
-      word_count += entry.wordcount
-      entry.text.downcase.scan(/[\w']+/).each do |v|
-        counts[v] += 1
-      end
-    end
+    total_word_count = entries.sum(:wordcount)
 
-    result[:word_count] = word_count
-    result[:uniq_words] = counts.size
-    result[:most_used] = counts.sort_by {|k,v| v}.reverse
-    result
+    query = <<-SQL
+      SELECT word, count(*)::int AS frequency
+      FROM (
+        SELECT regexp_split_to_table(lower(text), '[^\\w'']+') AS word
+        FROM entries
+        WHERE user_id = ?
+      ) t
+      WHERE word != ''
+      GROUP BY word
+      ORDER BY frequency DESC
+    SQL
+
+    results = ActiveRecord::Base.connection.select_rows(ActiveRecord::Base.send(:sanitize_sql_array, [query, id]))
+    {
+      word_count: total_word_count,
+      most_used: results
+    }
   end
 end

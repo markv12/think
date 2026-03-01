@@ -1,42 +1,59 @@
 <div>
   <h3>Total Words Typed: <%= number_with_delimiter(@word_info[:word_count], delimiter: ',') %></h3>
-  <h3>Total Unique Words: <%= number_with_delimiter(@word_info[:uniq_words], delimiter: ',') %></h3>
+  <h3>Total Unique Words: <%= number_with_delimiter(@word_info[:most_used].length, delimiter: ',') %></h3>
   <h3>Most Used Words:</h3>
 </div>
 
 <span id="word_container"></span>
 <script>
-  var data = <%= @word_info[:most_used].to_json.html_safe %>;
-  docReady(function() {
-    setTimeout(function() {
-      GenerateMostUsedWords(data);
-    }, 100);
+  const data = <%= raw(@word_info[:most_used].to_json) %>;
+
+  docReady(() => {
+    requestAnimationFrame(() => GenerateMostUsedWords(data));
   });
 
-function GenerateMostUsedWords(data){
-  var adjustmentConstant = 1
-  if(data.length > 0){
-    adjustmentConstant = 18.0/data[0][1]
-  }
-  var wordContainer = document.getElementById("word_container");
-  var htmlFragments = [];
-  for (var i = 0; i < data.length; i++) {
-    var [word, wordcount] = data[i];
-    var fontSize = (wordcount*adjustmentConstant) + 0.6
-    htmlFragments.push(
-      `<span class='uniq_word' title='${wordcount}' style='font-size:${fontSize}em; color:${getRandomColor()};'>${word} </span>`
-    );
-  }
-  wordContainer.innerHTML = htmlFragments.join("");
-}
+  function GenerateMostUsedWords(data) {
+    if (!data || data.length === 0) return;
 
-//const letters = '0123456789ABCDEF'.split('');
-const letters = '56789ABCDEF'.split('');
-function getRandomColor() {
-  var color = '#';
-  for (var i = 0; i < 6; i++ ) {
-      color += letters[Math.floor(Math.random() * 10)];
+    const maxCount = data[0][1];
+    const adjustmentConstant = maxCount > 0 ? 18.0 / maxCount : 1;
+
+    const wordContainer = document.getElementById("word_container");
+    const frag = document.createDocumentFragment();
+
+    for (let i = 0; i < data.length; i++) {
+      const word = data[i][0];
+      const wordcount = data[i][1];
+
+      const span = document.createElement("span");
+      span.className = "uniq_word";
+      span.title = String(wordcount);
+
+      const fontSize = (wordcount * adjustmentConstant) + 0.6;
+      span.style.fontSize = fontSize + "em";
+      span.style.color = colorForWord(word);
+
+      span.textContent = word + " ";
+      frag.appendChild(span);
+    }
+
+    wordContainer.replaceChildren(frag);
   }
-  return color;
-}
+
+  //const letters = '0123456789ABCDEF'.split('');
+  const letters = "56789ABCDEF";
+  const COLOR_SEED = Math.floor(Math.random() * 1000000);
+  function colorForWord(word) {
+    let hash = COLOR_SEED;
+    for (let i = 0; i < word.length; i++) {
+      hash = ((hash << 5) - hash) + word.charCodeAt(i);
+      hash |= 0;
+    }
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      const idx = (hash >> (i * 4)) & 0xF;
+      color += letters[idx % letters.length];
+    }
+    return color;
+  }
 </script>
